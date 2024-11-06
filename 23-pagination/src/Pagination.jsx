@@ -27,7 +27,7 @@ const Pagination = ({ currentPage, totalPages = 10, onPageChange }) => {
           key={pageNo}
           className={`${currentPage === pageNo ? "bg-red-600" : "bg-green-600"}`}
         />
-      ))}
+      ))};
 
       <Button
         onClick={() => onPageChange(currentPage + 1)}
