@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react'
+import ProgressBar from './ProgressBar';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (progress < 100) {
+      const interval = setInterval(() => {
+        setProgress((prevProgress) => Math.min(prevProgress + 1, 100));
+      }, 1000); // Adjust speed by changing the interval (in milliseconds)
+
+      return () => clearInterval(interval);
+    }
+  }, [progress]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="flex flex-col items-center justify-center h-screen max-w-3xl mx-auto gap-4">
+      <h1 className="text-2xl font-bold mb-4">Animated Progress Bar with Counting</h1>
+
+      {/* ProgressBar Component */}
+      <ProgressBar progress={progress} />
+
+      {/* Button to Reset Progress */}
+      <button
+        onClick={() => setProgress(0)}
+        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-200"
+      >
+        Reset Progress
+      </button>
+    </div>
+  );
 }
 
 export default App
