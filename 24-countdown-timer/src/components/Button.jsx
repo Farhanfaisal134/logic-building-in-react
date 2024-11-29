@@ -9,4 +9,4 @@ const Button = ({ className, text, onClick }) => {
   )
 }
 
-export default Button
+export default Button;

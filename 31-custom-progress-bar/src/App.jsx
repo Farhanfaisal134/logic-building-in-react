@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ProgressBar from './ProgressBar';
 
 const App = () => {
@@ -8,10 +8,10 @@ const App = () => {
     if (progress < 100) {
       const interval = setInterval(() => {
         setProgress((prevProgress) => Math.min(prevProgress + 1, 100));
-      }, 1000); // Adjust speed by changing the interval (in milliseconds)
+      }, 100);
 
       return () => clearInterval(interval);
-    }
+    };
   }, [progress]);
 
   return (

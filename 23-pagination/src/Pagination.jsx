@@ -37,6 +37,6 @@ const Pagination = ({ currentPage, totalPages = 10, onPageChange }) => {
       />
     </div>
   )
-}
+};
 
-export default Pagination
+export default Pagination;

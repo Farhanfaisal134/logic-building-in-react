@@ -14,6 +14,7 @@ const useFetch = (url, option = {}) => {
       };
 
       const result = await response.json()
+
       setData(result.products);
       setError(null);
       setLoading(false);

@@ -8,13 +8,13 @@ const Model = ({ id, header, body, footer, onClose }) => {
     function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
-      }
-    }
+      };
+    };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [onClose]);
+  }, []);
 
   return (
     <div

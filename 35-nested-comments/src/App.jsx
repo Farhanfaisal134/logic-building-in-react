@@ -9,11 +9,10 @@ const App = () => {
       title: "This is first comment",
       children: [
         { id: 2, title: "This is child comment one", children: [] },
-        { id: 3, title: "This is child comment two", children: [] },
-        { id: 4, title: "This is child comment three", children: [] },
       ],
     },
   ]);
+  console.log(comments);
 
   const handleAddReply = (parentId, replyText) => {
     setComments((prevComments) =>

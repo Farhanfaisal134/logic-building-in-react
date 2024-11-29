@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 
 const Details = () => {
   const { id } = useParams();
-
   const {
     recipeDetailsData,
     setRecipeDetailsData,
@@ -18,6 +17,8 @@ const Details = () => {
     async function getRecipeDetails() {
       const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
       const data = await response.json()
+      console.log(data);
+      
       if (data?.data) {
         setRecipeDetailsData(data?.data);
       }

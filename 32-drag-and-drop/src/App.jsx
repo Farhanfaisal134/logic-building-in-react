@@ -44,7 +44,7 @@ const App = () => {
   const renderTodos = (status) => {
     return todos
       .filter((todoItem) => todoItem.status === status)
-      .map((todoItem) => ( 
+      .map((todoItem) => (
         <div
           onDragStart={(event) => onDragStart(event, todoItem.id)}
           draggable
@@ -63,6 +63,7 @@ const App = () => {
         <p>Loading...</p>
       ) : (
         <div className="max-w-3xl mx-auto grid grid-cols-2 gap-4 mt-6 p-4 h-[80vh]">
+          {/* inProgress */}
           <div
             onDrop={(event) => onDrop(event, "wip")}
             onDragOver={(event) => event.preventDefault()}
@@ -71,6 +72,7 @@ const App = () => {
             <h3 className="text-2xl font-bold">In Progress</h3>
             {renderTodos("wip")}
           </div>
+          {/* completed */}
           <div
             onDrop={(event) => onDrop(event, "completed")}
             onDragOver={(event) => event.preventDefault()}

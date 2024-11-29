@@ -44,10 +44,10 @@ const App = () => {
       copyState.push(getCurrentId);
     } else {
       copyState.splice(findIndexOfCurretnId, 1);
-    }
+    };
 
     setMultiple(copyState);
-  }
+  };
 
   return (
     <div className="w-full min-h-screen p-4 flex flex-col justify-center items-center bg-gray-700 text-white">

@@ -17,7 +17,7 @@ const CountdownTimer = ({ initialTime }) => {
           return prevTime - 1
         })
       }, 1000);
-    }
+    };
 
     return () => {
       clearInterval(intervalReference.current)
@@ -62,4 +62,4 @@ const CountdownTimer = ({ initialTime }) => {
   )
 }
 
-export default CountdownTimer
+export default CountdownTimer;

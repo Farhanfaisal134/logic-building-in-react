@@ -11,8 +11,8 @@ const GlobalState = ({ children }) => {
   const [recipeList, setRecipeList] = useState([]);
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
   const [favoritesList, setFavoritesList] = useState([]);
-
   const navigate = useNavigate();
+  console.log(recipeList);
 
   async function handleSubmit(event) {
     event.preventDefault();

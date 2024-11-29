@@ -42,7 +42,6 @@ const App = () => {
     );
   }, [currentSelectedCategory]);
 
-
   const uniqueCategories =
     products && products.length > 0
       ? [...new Set(products.map((productItem) => productItem.category))]

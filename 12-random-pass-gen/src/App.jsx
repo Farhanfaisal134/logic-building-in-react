@@ -22,9 +22,7 @@ const App = () => {
   };
 
   const handleCopy = () => {
-    console.log("call");
-
-    navigator.clipboardwriteText(password);
+    navigator.clipboard.writeText(password);
     setCopied(true)
 
     setTimeout(() => {
@@ -33,7 +31,6 @@ const App = () => {
   };
 
   const { password, errorMesssage, generatePassword } = usePasswordGenerator();
-
 
   return (
     <div className='bg-[#24232b] w-full h-screen flex 

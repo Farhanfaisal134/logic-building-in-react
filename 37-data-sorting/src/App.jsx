@@ -34,7 +34,7 @@ const App = () => {
       );
     } else if (sort === "descending") {
       cpyUsers = cpyUsers.sort((firstUser, secondUser) =>
-        firstUser.firstName > secondUser.firstName ? -1 : 1
+        firstUser.firstName > secondUser.firstName ? -1 : 1 // -1 swap nhi karna 1 swap karna han
       );
     }
     setUsers(cpyUsers);

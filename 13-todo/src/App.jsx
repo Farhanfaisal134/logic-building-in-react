@@ -75,7 +75,9 @@ const App = () => {
           />
           <button
             onClick={addTodos}
-            className="px-2 py-2 text-xl rounded-md bg-slate-600 hover:bg-slate-700">
+            disabled={task.trim() === ''}
+            className={`px-2 py-2 text-xl rounded-md bg-slate-600 hover:bg-slate-700 
+            disabled:bg-gray-400 disabled:cursor-not-allowed`}>
             Add
           </button>
         </div>

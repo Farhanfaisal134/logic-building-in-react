@@ -4,7 +4,6 @@ import Model from './components/Model'
 
 const App = () => {
   const [showModal, setShowModel] = useState(false)
-  // console.log(showModal);
 
   function handleToggleModalPopup() {
     setShowModel(!showModal)

@@ -8,7 +8,7 @@ const App = () => {
   const ref = useRef();
   const [showContent, setShowContent] = useState(false);
 
-  //useOutsideClick(ref, () => setShowContent(false))
+  // useOutsideClick(ref, () => setShowContent(false))
 
   useEffect(() => {
     function listner(event) {

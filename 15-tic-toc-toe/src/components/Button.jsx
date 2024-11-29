@@ -7,4 +7,4 @@ const Button = ({ content, onClick, className }) => {
   )
 }
 
-export default Button
+export default Button;

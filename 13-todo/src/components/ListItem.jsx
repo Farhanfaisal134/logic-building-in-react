@@ -62,7 +62,7 @@ const ListItem = (
             }
           }}
           className='w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center'>
-          {isEditing ? "upd" : <CiEdit size={30} />}
+          {isEditing ? "Upd" : <CiEdit size={30} />}
         </button>
       </div>
     </div>

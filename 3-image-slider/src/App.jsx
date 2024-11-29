@@ -1,6 +1,5 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react'
+import React, { useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 const App = ({ url = "https://picsum.photos/v2/list", limit = 5, page = 1 }) => {
@@ -8,6 +7,7 @@ const App = ({ url = "https://picsum.photos/v2/list", limit = 5, page = 1 }) => 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [errorMsg, setErrorMsg] = useState(null);
   const [loading, setLoading] = useState(false);
+  const intervalRef = useRef(null);
 
   async function fetchImages(getUrl) {
     try {
@@ -32,16 +32,35 @@ const App = ({ url = "https://picsum.photos/v2/list", limit = 5, page = 1 }) => 
   }
 
   function handlePrevious() {
-    setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
+    setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }
 
   function handleNext() {
-    setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
+    setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }
 
   useEffect(() => {
     if (url !== "") fetchImages(url);
   }, [url]);
+
+  useEffect(() => {
+    function startInterval() {
+      intervalRef.current = setInterval(handleNext, 2000); // Change slide every 3 seconds
+    }
+    startInterval();
+
+    return () => {
+      clearInterval(intervalRef.current); // Cleanup interval on unmount
+    };
+  }, [images]);
+
+  function pauseInterval() {
+    clearInterval(intervalRef.current);
+  }
+
+  function resumeInterval() {
+    intervalRef.current = setInterval(handleNext, 2000);
+  }
 
   if (loading) {
     return <div className="text-center text-lg">Loading data! Please wait...</div>;
@@ -52,40 +71,46 @@ const App = ({ url = "https://picsum.photos/v2/list", limit = 5, page = 1 }) => 
   }
 
   return (
-    <div className='flex h-screen w-full justify-center items-center relative'>
-      {
-        images && images.length > 0
-          ? images.map((imageItem, index) => (
-            <img
+    <div
+      className="flex h-screen w-full justify-center items-center relative"
+      onMouseEnter={pauseInterval}
+      onMouseLeave={resumeInterval}
+    >
+      {images && images.length > 0 ? (
+        images.map((imageItem, index) => (
+          <img
+            key={index}
+            src={imageItem.download_url}
+            alt=""
+            className={`w-full h-full ${currentSlide === index ? "block" : "hidden"}`}
+          />
+        ))
+      ) : (
+        <h3>No Images Found</h3>
+      )}
+      <BsArrowLeftCircleFill
+        onClick={handlePrevious}
+        className="rounded-full absolute left-4 cursor-pointer text-white"
+        size={40}
+      />
+      <BsArrowRightCircleFill
+        onClick={handleNext}
+        className="rounded-full absolute right-4 cursor-pointer text-white"
+        size={40}
+      />
+      <span className="flex gap-3 absolute bottom-8">
+        {images &&
+          images.length &&
+          images.map((_, index) => (
+            <button
               key={index}
-              src={imageItem.download_url}
-              className={`w-full h-full ${currentSlide === index ? "flex" : "hidden"}`}
-            />
-          )) : (
-            <h3>No Images Found</h3>
-          )
-      }
-      <BsArrowLeftCircleFill onClick={handlePrevious}
-        className='rounded-full absolute left-4 cursor-pointer text-white' size={40} />
-
-      <BsArrowRightCircleFill onClick={handleNext}
-        className='rounded-full absolute right-4 cursor-pointer text-white' size={40} />
-
-      <span className='flex gap-3 absolute bottom-8'>
-        {
-          images && images.length
-            ? images.map((_, index) => (
-              <button
-                key={index}
-                className={`h-6 w-6 rounded-full 
-                ${currentSlide === index ? "bg-white" : "bg-gray-600"}`}
-                onClick={() => setCurrentSlide(index)}
-              ></button>
-            ))
-            : null}
+              className={`h-6 w-6 rounded-full ${currentSlide === index ? "bg-white" : "bg-gray-600"}`}
+              onClick={() => setCurrentSlide(index)}
+            ></button>
+          ))}
       </span>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -29,6 +29,7 @@ const App = () => {
   const [selectedOptions, setSelectedOptions] = useState(
     new Array(questions.length).fill(null)
   );
+
   const [score, setScore] = useState(0);
 
   const handleSelectedOption = (option) => {
@@ -80,10 +81,9 @@ const App = () => {
               <button
                 key={option}
                 className={`px-4 py-2 rounded-lg text-lg font-medium shadow-sm transition-colors duration-300
-                  ${
-                    selectedOptions[currentQuestion] === option
-                      ? "bg-green-400 text-white"
-                      : "bg-blue-200 text-blue-800 hover:bg-blue-300"
+                  ${selectedOptions[currentQuestion] === option
+                    ? "bg-green-400 text-white"
+                    : "bg-blue-200 text-blue-800 hover:bg-blue-300"
                   }`}
                 onClick={() => handleSelectedOption(option)}
               >

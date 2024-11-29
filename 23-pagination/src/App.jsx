@@ -12,7 +12,7 @@ const App = () => {
 
   function handlePageChange(currentPage) {
     setCurrentPage(currentPage);
-  }
+  };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;

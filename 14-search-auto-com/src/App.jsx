@@ -8,6 +8,7 @@ const App = () => {
   const [searchParam, setSearchParams] = useState("");
   const [showDropdown, setShowDropDown] = useState(false);
   const [filtredUsers, setFiltredUsers] = useState([]);
+  console.log(users);
 
   function handleChange(event) {
     const query = event.target.value.toLowerCase();
@@ -23,13 +24,13 @@ const App = () => {
     } else {
       setShowDropDown(false);
     }
-  }
+  };
 
   function handleClick(event) {
     setShowDropDown(false);
     setSearchParams(event.target.innerText);
     setFiltredUsers([]);
-  }
+  };
 
   async function fetchListOfUsers() {
     try {
@@ -46,7 +47,7 @@ const App = () => {
       console.log(error);
       setError(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchListOfUsers();

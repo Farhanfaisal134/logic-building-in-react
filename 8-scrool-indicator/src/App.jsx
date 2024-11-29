@@ -5,8 +5,6 @@ const App = ({ url = "https://dummyjson.com/products?limit=100" }) => {
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
-  console.log(scrollPercentage);
-
 
   async function fetchData(getUrl) {
     try {
@@ -14,7 +12,6 @@ const App = ({ url = "https://dummyjson.com/products?limit=100" }) => {
       const response = await fetch(getUrl);
       const data = await response.json();
       if (data && data.products && data.products.length > 0) {
-
         setData(data.products)
         setLoading(false)
       };
@@ -58,7 +55,7 @@ const App = ({ url = "https://dummyjson.com/products?limit=100" }) => {
       <div className='mt-5 text-center'>
         {
           data && data.length > 0
-            ? data.map((dataItem) => <p className='w-full p-3'>{dataItem.title}</p>)
+            ? data.map((dataItem, idx) => <p className='w-full p-3' key={idx}>{dataItem.title}</p>)
             :
             null
         }

@@ -23,7 +23,6 @@ const App = () => {
               (existingProduct) => newProduct.id === existingProduct.id
             )
         );
-
         setProducts((prevData) => [...prevData, ...uniqueProducts]);
       }
       setLoading(false);

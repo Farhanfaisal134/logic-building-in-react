@@ -49,9 +49,7 @@ const App = () => {
     if (getDirection === "forward") {
       SetCurrentMusicTrack((prevTrack) => (prevTrack + 1) % tracks.length);
     } else if (getDirection === "backward") {
-      SetCurrentMusicTrack(
-        (prevTrack) => (prevTrack - 1 + tracks.length) % tracks.length
-      );
+      SetCurrentMusicTrack(currentMusicTrack === 0 ? tracks.length - 1 : currentMusicTrack - 1)
     };
   };
 

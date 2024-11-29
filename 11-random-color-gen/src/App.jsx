@@ -4,10 +4,11 @@ import Button from "./Button";
 const App = () => {
   const [typeOfColor, setTypeOfColor] = useState("hex");
   const [color, setColor] = useState("#000000");
+  const [copyMessage, setCopyMessage] = useState("");
 
   function randomColorUtility(length) {
     return Math.floor(Math.random() * length);
-  }
+  };
 
   //#B4F379
   function handleCreateRandomHexColor() {
@@ -18,7 +19,7 @@ const App = () => {
       hexColor += hex[randomColorUtility(hex.length)];
     }
     setColor(hexColor);
-  }
+  };
 
   function handleCreateRandomRgbColor() {
     const r = randomColorUtility(256);
@@ -26,12 +27,23 @@ const App = () => {
     const b = randomColorUtility(256);
 
     setColor(`rgb(${r},${g},${b})`);
-  }
+  };
 
   useEffect(() => {
     if (typeOfColor === "rgb") handleCreateRandomRgbColor();
     else handleCreateRandomHexColor();
   }, [typeOfColor]);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(color) // Copies the color to clipboard
+      .then(() => {
+        setCopyMessage("Copied"); // Feedback message
+        setTimeout(() => setCopyMessage(""), 2000); // Clears the message after 2 seconds
+      })
+      .catch(() => {
+        setCopyMessage("Failed to copy!");
+      });
+  };
 
   return (
     <div
@@ -57,7 +69,9 @@ const App = () => {
       top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
       >
         <h3>{typeOfColor === "rgb" ? "RGB Color" : "HEX Color"}</h3>
-        <h1>{color}</h1>
+        <h1 onClick={handleCopy}>{color}</h1>
+        {copyMessage && <p className="text-xs absolute top-[2rem] right-[-1rem] 
+        bg-white text-gray-600 p-1 rounded-lg font-bold">{copyMessage}</p>}
       </div>
     </div>
   );

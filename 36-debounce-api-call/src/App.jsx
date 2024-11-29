@@ -27,11 +27,21 @@ const App = () => {
       console.log(error);
       setPending(false);
     }
-  }
+  };
 
   useEffect(() => {
     fetchListOfRecipes();
   }, [debounceParamValue]);
+  // without debounce hook
+  // useEffect(() => {
+  //   const timeoutId = setTimeout(() => {
+  //     if (searchParam.trim() !== "") {
+  //       fetchListOfRecipes(searchParam);
+  //     }
+  //   }, 1000);
+
+  //   return () => clearTimeout(timeoutId);
+  // }, [searchParam]);
 
   return (
     <div className='w-full min-h-screen bg-yellow-500'>

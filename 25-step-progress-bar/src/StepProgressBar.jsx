@@ -16,6 +16,7 @@ const StepProgressBar = ({ steps, activeStep, setActiveStep }) => {
         {steps && steps.length > 0
           ? steps.map((stepItem, index) => (
             <div
+              key={index}
               className={`px-4 py-2 w-full rounded-md flex justify-center 
                     transition-colors duration-500 ease-in-out
                   ${index <= activeStep ? "bg-green-600" : "bg-blue-700"}`}
