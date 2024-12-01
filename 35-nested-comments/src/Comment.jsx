@@ -1,64 +1,86 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react'
 
-const Comment = ({ comment, handleAddReply }) => {
-  const [reply, setReply] = useState("");
+const Comment = ({ comment, addReply }) => {
+  const [replyText, setReplyText] = useState('');
   const [showReplyBox, setShowReplyBox] = useState(false);
+  const inputRef = useRef(null);
 
-  const handleReplySubmit = () => {
-    handleAddReply(comment.id, reply);
+  const handleReply = () => {
+    setShowReplyBox(true);
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 0)
+  };
+
+  const handleCancleComment = () => {
     setShowReplyBox(false);
-    setReply("");
+  };
+
+  const handleKeyDown = (e, commentId) => {
+    if (e.key === 'Enter') {
+      handleReplySave(commentId);
+    } else if (e.key === 'Escape') {
+      handleCancleComment();
+    }
+  };
+
+  const handleReplySave = (commentId) => {
+    addReply(commentId, replyText)
+    setShowReplyBox(false);
+    setReplyText('');
   };
 
   return (
-    <div className="comment ml-4">
-      <div className="flex items-center gap-2">
-        <span className="font-medium text-lg">{comment.title}</span>
-        {!showReplyBox && (
+    <li key={comment.id} className='comment-line'>
+      {comment.display}
+      {
+        !showReplyBox && (
           <button
-            onClick={() => setShowReplyBox(true)}
-            className="text-sm text-blue-500 hover:underline"
-          >
-            Reply
-          </button>
-        )}
-      </div>
-
-      {showReplyBox && (
-        <div className="mt-2">
-          <textarea
-            rows="2"
-            value={reply}
-            onChange={(e) => setReply(e.target.value)}
-            placeholder="Write a reply..."
-            className="w-full p-2 border rounded-md focus:border-blue-400 outline-none transition"
-          />
-          <div className="flex items-center gap-2 mt-2">
+            onClick={handleReply}
+            className='btn'>
+            Reply</button>
+        )
+      }
+      {
+        showReplyBox ? (
+          <>
+            <br />
+            <input
+              value={replyText}
+              type='text'
+              ref={inputRef}
+              onKeyDown={(e) => handleKeyDown(e, comment.id)}
+              onChange={(e) => setReplyText(e.target.value)}
+              style={{ marginBlock: "5px" }}
+            />
+            <br />
             <button
-              onClick={handleReplySubmit}
-              className="px-4 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+              onClick={() => handleReplySave(comment.id)}
+              className='btn'
             >
-              Submit
+              save
             </button>
-            <button
-              onClick={() => setShowReplyBox(false)}
-              className="px-4 py-1 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
+            <button className='btn' onClick={handleCancleComment}>cancle</button>
+          </>
+        ) : null
+      }
+      {
+        comment.children.length ? (
+          <ul>
+            {
+              comment.children.map((item) => (
+                <Comment
+                  key={item.id}
+                  comment={item}
+                  addReply={addReply}
+                />
+              ))
+            }
+          </ul>
+        ) : null
+      }
+    </li >
+  )
+}
 
-      {comment.children && comment.children.length > 0 && (
-        <div className="pl-4 mt-2 space-y-2 border-l border-gray-300">
-          {comment.children.map(child => (
-            <Comment key={child.id} comment={child} handleAddReply={handleAddReply} />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default Comment;
+export default Comment
