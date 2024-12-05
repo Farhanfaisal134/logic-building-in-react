@@ -54,6 +54,7 @@ const App = () => {
       {/* Tab Content */}
       <div className="p-6 border-t-2 border-gray-200 bg-gray-100 mt-2 rounded-b-lg">
         {tabs[currentTabIndex] && tabs[currentTabIndex].content}
+        {/* {curnIdx === idx && item.display} */}
       </div>
     </div>
   );
