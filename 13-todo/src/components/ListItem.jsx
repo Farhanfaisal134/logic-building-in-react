@@ -13,13 +13,15 @@ const ListItem = (
   const [udpatedValue, setUpdatedValue] = useState(todo.value)
 
   function handleUpdateClick() {
-    handleUpdate(todo.id, udpatedValue)
-    setIsEditing(false)
+    if (udpatedValue.trim() !== "") {
+      handleUpdate(todo.id, udpatedValue)
+      setIsEditing(false)
+    }
   };
 
   return (
     <div
-      className='bg-slate-700 px-2 py-2 flex justify-between items-center text-xl w-full'>
+      className='bg-slate-700 px-2 py-2 flex justify-between items-center text-xl w-full rounded-md'>
       {
         todo.isCompleted ?
           (
@@ -41,7 +43,6 @@ const ListItem = (
             <p className='w-full font-bold'>{todo.value}</p>
           )
       }
-
       <div className='flex gap-1 items-center'>
         <button
           onClick={() => handleDelete(todo.id)}
@@ -61,7 +62,8 @@ const ListItem = (
               setIsEditing(true)
             }
           }}
-          className='w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center'>
+          disabled={udpatedValue.trim() === "" || todo.isCompleted === true}
+          className='w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center disabled:cursor-not-allowed disabled:bg-gray-300'>
           {isEditing ? "Upd" : <CiEdit size={30} />}
         </button>
       </div>
