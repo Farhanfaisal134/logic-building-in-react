@@ -11,7 +11,7 @@ const CartItem = ({ cartItem }) => {
   };
 
   return (
-    <div className="flex items-center p-5 justify-between bg-red-500 mt-2 mb-2 gap-4 rounded-xl">
+    <div className="flex flex-col items-center p-5 md:flex-row md:justify-between bg-red-500 mt-2 mb-2 gap-4 rounded-xl">
       <img
         src={cartItem?.image}
         className="h-28 rounded-lg"

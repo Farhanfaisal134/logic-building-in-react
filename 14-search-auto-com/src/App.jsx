@@ -8,7 +8,6 @@ const App = () => {
   const [searchParam, setSearchParams] = useState("");
   const [showDropdown, setShowDropDown] = useState(false);
   const [filtredUsers, setFiltredUsers] = useState([]);
-  console.log(users);
 
   function handleChange(event) {
     const query = event.target.value.toLowerCase();
@@ -53,6 +52,11 @@ const App = () => {
     fetchListOfUsers();
   }, []);
 
+  function handleRemove() {
+    setSearchParams("")
+    setFiltredUsers([]);
+  }
+
   return (
     <div
       className="w-full max-w-2xl mx-auto bg-[#f9f9f9] 
@@ -62,16 +66,22 @@ const App = () => {
         {
           loading ? (<h1 className="text-center text-2xl">Loading Data ! Please wait</h1>)
             : (
-              <input
-                type="text"
-                value={searchParam}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border-2"
-              />
+              <div className="w-full flex border-2">
+                <input
+                  type="text"
+                  value={searchParam}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 outline-none"
+                />
+                {
+                  searchParam.length > 0 ? <button className="text-xl px-4 py-2 bg-gray-400 text-white"
+                    onClick={handleRemove}>X</button> : null
+                }
+              </div>
             )
         }
         <div>
-          {showDropdown && <Suggestions handleClick={handleClick} data={filtredUsers} />}
+          {showDropdown && filtredUsers.length > 0 && < Suggestions handleClick={handleClick} data={filtredUsers} />}
         </div>
       </div>
     </div>

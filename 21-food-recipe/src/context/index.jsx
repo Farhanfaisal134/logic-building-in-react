@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 export const GlobalContext = createContext(null);
 
@@ -10,12 +10,12 @@ const GlobalState = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [recipeList, setRecipeList] = useState([]);
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
-  const [favoritesList, setFavoritesList] = useState([]);
+  const [favoritesList, setFavoritesList] = useState(JSON.parse(localStorage.getItem("favorites")) || []);
   const navigate = useNavigate();
-  console.log(recipeList);
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true)
     try {
       const res = await fetch(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
@@ -42,9 +42,14 @@ const GlobalState = ({ children }) => {
       cpyFavoritesList.push(getCurrentItem);
     } else {
       cpyFavoritesList.splice(index, 1);
-    }
+    };
     setFavoritesList(cpyFavoritesList);
-  }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favoritesList))
+  }, [favoritesList])
+
 
   return (
     <GlobalContext.Provider

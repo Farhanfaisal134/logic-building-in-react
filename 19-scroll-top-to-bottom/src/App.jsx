@@ -14,7 +14,7 @@ const App = () => {
       left: 0,
       behavior: "smooth",
     });
-  }
+  };
 
   function handleScrollToBottom() {
     ref.current.scrollIntoView({ behavior: "smooth" });

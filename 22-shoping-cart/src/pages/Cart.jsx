@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const [totalCart, setTotalCart] = useState(0);
-
   const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
@@ -16,8 +15,8 @@ const Cart = () => {
     <div className="flex justify-center">
       {cart && cart.length ? (
         <>
-          <div className="min-h-[80vh] grid md:grid-cols-2 place-items-center max-w-6xl mx-auto">
-            <div className="flex flex-col p-3">
+          <div className="min-h-[80vh] grid md:grid-cols-2 place-items-center w-full md:max-w-6xl mx-auto">
+            <div className="w-full flex flex-col md:p-3">
               {cart.map((cartItem) => (
                 <CartItem cartItem={cartItem} />
               ))}

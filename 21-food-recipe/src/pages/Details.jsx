@@ -13,25 +13,25 @@ const Details = () => {
     handleAddToFavorite,
   } = useContext(GlobalContext);
 
+
   useEffect(() => {
     async function getRecipeDetails() {
       const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
       const data = await response.json()
-      console.log(data);
-      
+
       if (data?.data) {
         setRecipeDetailsData(data?.data);
       }
-    }
+    };
     getRecipeDetails()
-  }, []);
+  }, [id]);
 
   return (
-    <div className='px-12 py-8 grid lg:grid-cols-2 gap-10 w-full'>
+    <div className='px-4 py-4 md:px-12 md:py-8 grid lg:grid-cols-2 gap-10 w-full' key={recipeDetailsData?.recipe?.id}>
       <div className="h-96 overflow-hidden rounded-xl group">
         <img
           src={recipeDetailsData?.recipe?.image_url}
-          className="w-full h-full object-cover block group-hover:scale-105 duration-300"
+          className="max-w-80 md:w-full mx-auto h-full object-cover block group-hover:scale-105 duration-300"
         />
       </div>
 
@@ -40,7 +40,7 @@ const Details = () => {
           {recipeDetailsData?.recipe?.publisher}
         </span>
 
-        <h3 className="font-bold text-2xl truncate text-black">
+        <h3 className="font-bold text-2xl text-black">
           {recipeDetailsData?.recipe?.title}
         </h3>
 
@@ -61,7 +61,7 @@ const Details = () => {
             Ingredients:
           </span>
           <ul className="flex flex-col gap-3">
-            {recipeDetailsData?.recipe?.ingredients.map((ingredient) => (
+            {recipeDetailsData?.recipe?.ingredients.slice(0, 5).map((ingredient) => (
               <li>
                 <span className="text-2xl font-semibold text-black">
                   {ingredient.quantity} {ingredient.unit}

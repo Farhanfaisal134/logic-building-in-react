@@ -1,13 +1,14 @@
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { GlobalContext } from "../context";
 
 const Navbar = () => {
-  const { handleSubmit, searchParam, setSearchParam } = useContext(GlobalContext);
+  const { handleSubmit, searchParam, setSearchParam, favoritesList } = useContext(GlobalContext);
+  const location = useLocation();
 
   return (
-    <nav className="flex flex-col gap-5 lg lg:justify-between items-center px-6 py-4 shadow-md
+    <nav className="flex flex-col gap-5 lg lg:justify-between items-center md:px-12 px-4 py-4 shadow-md
      lg:flex-row lg:gap-0">
       <h1 className="text-2xl font-bold">
         <Link to={"/"}>FoodRecipe</Link>
@@ -25,7 +26,8 @@ const Navbar = () => {
         <li>
           <Link
             to={"/"}
-            className="text-black hover:text-gray-700 duration-300 text-xl font-bold"
+            className={`text-black duration-300 text-xl font-bold pb-1
+              ${location.pathname === "/" ? "border-b-4 border-gray-500 text-gray-700" : ""}`}
           >
             Home
           </Link>
@@ -33,9 +35,10 @@ const Navbar = () => {
         <li>
           <Link
             to={"/favorites"}
-            className="text-black hover:text-gray-700 duration-300 text-xl font-bold"
+            className={`text-black  duration-300 text-xl font-bold pb-1
+              ${location.pathname === "/favorites" ? "border-b-4 border-gray-500" : ""}`}
           >
-            Favorites
+            Favorites {`(${favoritesList.length})`}
           </Link>
         </li>
       </ul>

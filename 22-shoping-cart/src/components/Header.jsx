@@ -9,14 +9,14 @@ const Header = () => {
 
   return (
     <div className="flex flex-col gap-4 w-full md:flex-row md:justify-between 
-    items-center max-w-6xl mx-auto py-6">
+    items-center mx-auto py-4 px-4 md:px-12">
       <Link to={"/"}>
         <h1 className="text-red-900 font-bold text-xl sm:text-2xl md:text-3xl 
-        cursor-pointer tracking-wide">
+        cursor-pointer tracking-wide text-center md:text-start">
           REACT REDUX SHOPPING CART
         </h1>
       </Link>
-      <ul className="flex list-none items-center space-x-6 text-gray-800 
+      <ul className="flex list-none items-center justify-center gap-4 text-gray-800 
       font-semibold flex-col md:flex-row">
         <Link to={"/"}>
           <li className="cursor-pointer list-none text-2xl font-semibold">Home</li>

@@ -4,17 +4,17 @@ const tracks = [
   {
     title: "Track 1",
     source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    image: "https://via.placeholder.com/150",
+    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
   },
   {
     title: "Track 2",
     source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    image: "https://via.placeholder.com/150",
+    image: "https://t4.ftcdn.net/jpg/04/10/17/95/360_F_410179527_ExxSzamajaCtS16dyIjzBRNruqlU5KMA.jpg",
   },
   {
     title: "Track 3",
     source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    image: "https://via.placeholder.com/150",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
   },
 ];
 
@@ -28,13 +28,20 @@ const App = () => {
     if (isPlaying) {
       const interval = setInterval(() => {
         setTrackProgress(
-          (audioRef.current.currentTime / audioRef.current.duration) * 100
+          (audioRef.current.currentTime / (audioRef.current.duration || 1)) * 100
         );
       }, 1000);
 
       return () => clearInterval(interval);
     }
   }, [isPlaying]);
+
+  useEffect(() => {
+    setTrackProgress(0);
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  }, [currentMusicTrack]);
 
   function handlePauseAndPlay() {
     if (isPlaying) {
@@ -43,23 +50,28 @@ const App = () => {
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
-  }
+  };
 
   function handleSkipTrack(getDirection) {
     if (getDirection === "forward") {
       SetCurrentMusicTrack((prevTrack) => (prevTrack + 1) % tracks.length);
     } else if (getDirection === "backward") {
-      SetCurrentMusicTrack(currentMusicTrack === 0 ? tracks.length - 1 : currentMusicTrack - 1)
+      SetCurrentMusicTrack((prevTrack) =>
+        prevTrack === 0 ? tracks.length - 1 : prevTrack - 1
+      );
     };
+    setTimeout(() => audioRef.current.play(), 100); // Auto-play new track
+    setIsPlaying(true);
   };
 
   return (
-    <div className="max-w-3xl mx-auto flex flex-col gap-3 items-center mt-10">
+    <div className="max-w-3xl mx-auto flex flex-col gap-3 items-center py-10 px-4">
       <h1 className="text-3xl font-bold">Music Player</h1>
       <h2 className="text-2xl font-bold">{tracks[currentMusicTrack].title}</h2>
       <img
         src={tracks[currentMusicTrack].image}
         alt={tracks[currentMusicTrack].title}
+        className="w-full object-cover"
       />
       <audio ref={audioRef} src={tracks[currentMusicTrack].source} />
       <div className="w-full h-3 bg-slate-700 rounded-md overflow-hidden">
@@ -67,26 +79,26 @@ const App = () => {
           className="h-full transition-all duration-300 ease-in-out rounded-md"
           style={{
             width: `${trackProgress}%`,
-            backgroundColor: isPlaying ? "#3498db" : "#a43636"
+            backgroundColor: isPlaying ? "#3498db" : "#a43636",
           }}
         ></div>
       </div>
       <div className="flex gap-3 justify-center mt-4">
         <button
-          className="px-4 py-2 border-2 border-gray-500 
+          className="px-3 py-2 border-2 border-gray-500 
           rounded-md shadow-md text-xl"
           onClick={() => handleSkipTrack("backward")}
         >
           Backward
         </button>
         <button
-          className="px-4 py-2 border-2 border-gray-500 rounded-md shadow-md text-xl"
+          className="px-3 py-2 border-2 border-gray-500 rounded-md shadow-md text-xl"
           onClick={handlePauseAndPlay}
         >
           {isPlaying ? "Pause" : "Play"}
         </button>
         <button
-          className="px-4 py-2 border-2 border-gray-500 rounded-md shadow-md text-xl"
+          className="px-3 py-2 border-2 border-gray-500 rounded-md shadow-md text-xl"
           onClick={() => handleSkipTrack("forward")}
         >
           Forward

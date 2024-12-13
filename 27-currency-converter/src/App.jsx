@@ -15,7 +15,6 @@ const App = () => {
       },
     );
     const result = await apiResponse.json();
-
     const calculatedRate = result?.rates[toCurrency];
     setExchangeRate(calculatedRate);
     setConvertedAmount((amount * calculatedRate).toFixed(2))
@@ -32,6 +31,7 @@ const App = () => {
 
         <div className='flex w-full border border-gray-300 rounded-lg overflow-hidden'>
           <input
+            value={amount}
             className='bg-transparent p-3 text-xl w-full outline-none bg-white'
             placeholder='Enter amount'
             onChange={(e) => setAmount(e.target.value)}
@@ -68,7 +68,7 @@ const App = () => {
             <option value={"PKR"}>PKR</option>
             <option value={"INR"}>INR</option>
             <option value={"USD"}>USD</option>
-            <option value={"ERU"}>ERU</option>
+            <option value={"EUR"}>EUR</option>
           </select>
         </div>
 

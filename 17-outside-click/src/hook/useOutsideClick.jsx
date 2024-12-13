@@ -19,4 +19,4 @@ const useOutsideClick = (ref, handler = () => { }) => {
   }, [ref, handler])
 }
 
-export default useOutsideClick
+export default useOutsideClick;
