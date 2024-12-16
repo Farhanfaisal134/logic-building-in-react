@@ -46,8 +46,7 @@ function App() {
 
   const handleRemoveUser = (user) => {
     const updatedUsers = selectedUsers.filter(
-      (selectedUser) => selectedUser.id !== user.id
-    );
+      (selectedUser) => selectedUser.id !== user.id);
     setSelectedUsers(updatedUsers);
 
     const updatedEmails = new Set(selectedUserSet);

@@ -4,6 +4,7 @@ const App = () => {
   const scrollContainer = useRef(null);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
+
   const arr = useMemo(
     () => Array.from({ length: 30 }, (_, index) => `Item ${index + 1}`),
     []
@@ -15,7 +16,7 @@ const App = () => {
         left: -200,
         behavior: "smooth",
       });
-    }
+    };
   };
 
   const scrollRight = () => {
@@ -31,19 +32,18 @@ const App = () => {
     const container = scrollContainer.current;
     if (container) {
       const { scrollLeft, scrollWidth, clientWidth } = container;
-      
+
       setIsAtStart(scrollLeft === 0);
-      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth);
-    }
+      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 1);
+    };
   };
 
   useEffect(() => {
     const container = scrollContainer.current;
     if (container) {
       container.addEventListener("scroll", handleScroll);
-      handleScroll(); // Check initial position
       return () => container.removeEventListener("scroll", handleScroll);
-    }
+    };
   }, []);
 
   return (

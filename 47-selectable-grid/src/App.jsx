@@ -50,7 +50,7 @@ const App = () => {
       const stringPos = pos.join('');
       if (selectedGrid.includes(stringPos)) {
         item.isColor = true;
-      }
+      };
       return item;
     });
     setTwoDMatrix(copyMat);

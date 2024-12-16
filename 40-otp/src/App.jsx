@@ -10,10 +10,8 @@ function App() {
 
   const handleSubmit = () => {
     const missed = inputs.map((item, i) => {
-      if (item === '')
-        return i;
+      if (item === '') return i;
     }).filter((item) => (item || item === 0));
-    console.log('missed ', missed);
     setMissing(missed);
     if (missed.length) return;
 
@@ -29,11 +27,12 @@ function App() {
 
   const handleInputChange = (e, index) => {
     const val = e.target.value;
-    if (!Number(val)) return
+    if (!Number(val)) return;
 
     if (index < inputs.length - 1) {
       refs[index + 1].current.focus()
     };
+
     const copyInputs = [...inputs];
     copyInputs[index] = val;
     setInputs(copyInputs)
