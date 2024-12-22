@@ -13,7 +13,7 @@ const CountdownTimer = ({ targetDate }) => {
         seconds: Math.floor((difference / 1000) % 60),
       };
     };
-    return null; // Timer ends
+    return null;
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
@@ -23,8 +23,13 @@ const CountdownTimer = ({ targetDate }) => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearInterval(timer); // Cleanup interval
+    return () => clearInterval(timer);
   }, [targetDate]);
+
+
+  const padWithZero = (value) => {
+    return value < 10 ? `0${value}` : value;
+  };
 
   if (!timeLeft) {
     return (
@@ -35,23 +40,23 @@ const CountdownTimer = ({ targetDate }) => {
   }
 
   return (
-    <div className="w-full flex justify-center items-center p-4">
-      <div className="grid grid-cols-4 gap-4 text-center bg-gray-800 text-white p-6 rounded-lg shadow-lg">
-        <div className="flex flex-col">
-          <span className="text-4xl font-bold">{timeLeft.days}</span>
-          <span className="text-lg">Days</span>
+    <div className="w-full flex justify-center items-center">
+      <div className="grid grid-cols-4 gap-4 text-center bg-gray-800 text-white p-4 rounded-lg shadow-lg">
+        <div className="flex flex-col gap-4">
+          <span className="text-2xl md:text-4xl font-bold">{padWithZero(timeLeft.days)}</span>
+          <span className="md:text-lg">Days</span>
         </div>
-        <div className="flex flex-col">
-          <span className="text-4xl font-bold">{timeLeft.hours}</span>
-          <span className="text-lg">Hours</span>
+        <div className="flex flex-col gap-4">
+          <span className="text-2xl md:text-4xl font-bold">{padWithZero(timeLeft.hours)}</span>
+          <span className="md:text-lg">Hours</span>
         </div>
-        <div className="flex flex-col">
-          <span className="text-4xl font-bold">{timeLeft.minutes}</span>
-          <span className="text-lg">Minutes</span>
+        <div className="flex flex-col gap-4">
+          <span className="text-2xl md:text-4xl font-bold">{padWithZero(timeLeft.minutes)}</span>
+          <span className="md:text-lg">Minutes</span>
         </div>
-        <div className="flex flex-col">
-          <span className="text-4xl font-bold">{timeLeft.seconds}</span>
-          <span className="text-lg">Seconds</span>
+        <div className="flex flex-col gap-4">
+          <span className="text-2xl md:text-4xl font-bold">{padWithZero(timeLeft.seconds)}</span>
+          <span className="md:text-lg">Seconds</span>
         </div>
       </div>
     </div>

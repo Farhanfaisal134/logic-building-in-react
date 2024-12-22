@@ -32,7 +32,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
       <div className="bg-white shadow-lg rounded-lg p-6 w-80 text-center">
         <h1 className="text-2xl font-bold mb-4 text-gray-800">Stopwatch</h1>
         <p className="text-3xl font-mono text-blue-600 mb-6">{formatTime()}</p>
