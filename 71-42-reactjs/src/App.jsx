@@ -40,6 +40,15 @@ import UncontrolledInput from './components/UncontrolledInput';
 import DigitalClock from './components/DigitalClock';
 import CheckBoxes from './components/CheckBoxes';
 import Notifications from './components/Notifications';
+import NesteadCircles from './components/NesteadCircles';
+import TypeWriter from './components/TypeWriter';
+import VirtualizedList from './components/VirtualizedList';
+import StopWatch from "./components/StopWatch"
+import FixedHeader from './components/FixedHeader';
+import InfiniteHorizantalScroll from './components/InfiniteHorizantalScroll';
+import CountDownTimer from './components/CountDownTimer';
+import ToggleSwitchButton from './components/ToggleSwitchButton';
+import Calculator from './components/Calculator';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 const App = () => {
@@ -124,15 +133,30 @@ const App = () => {
       {/* Q=> 37 */}
       {/* <Notifications /> */}
       {/* Q=> 38 */}
+      {/* <NesteadCircles /> */}
       {/* Q=> 39 */}
+      {/* <TypeWriter /> */}
       {/* Q=> 40 */}
+      {/* <VirtualizedList /> */}
       {/* Q=> 41 */}
+      {/* <StopWatch /> */}
       {/* Q=> 42 */}
       {/* <DynamicForm /> */}
       {/* Q=> 43 */}
       {/* <SearchableTable /> */}
       {/* Q=> 44 */}
       {/* <CricketScore /> */}
+      {/* Q=> 45 */}
+      {/* <FixedHeader /> */}
+      {/* Q=> 46 */}
+      {/* <InfiniteHorizantalScroll /> */}
+      {/* Q=> 47 */}
+      {/* <CountDownTimer /> */}
+      {/* Q=> 48 */}
+      {/* <ToggleSwitchButton /> */}
+      {/* Q=> 49 */}
+      {/* <Calculator /> */}
+      {/* Q=> 50 */}
     </div>
   )
 };
