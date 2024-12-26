@@ -28,7 +28,8 @@ export default function VirtualizedList({ height = 400, width = 300, itemHeight 
           {visibleItems.map((item, index) => (
             <div
               key={visibleRange.startIndex + index}
-              className="absolute top-0 left-0 w-full text-center text-white bg-blue-500 border-b-2 border-gray-800 flex items-center justify-center"
+              className="absolute top-0 left-0 w-full text-center text-white bg-blue-500 border-b-2
+              border-gray-800 flex items-center justify-center"
               style={{
                 height: itemHeight,
                 top: (visibleRange.startIndex + index) * itemHeight,

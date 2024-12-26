@@ -28,7 +28,7 @@ export default function App() {
         clearInterval(interval);
         setIsTyping(false);
         setInputValue("");
-      }
+      };
     }, 500);
 
     return () => clearInterval(interval);

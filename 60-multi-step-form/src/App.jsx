@@ -64,7 +64,7 @@ const App = () => {
   };
 
   return (
-    <div className='h-screen w-full flex justify-center items-center bg-gray-900'>
+    <div className='h-screen w-full flex justify-center items-center bg-gray-900 p-2'>
       {!isFormSubmitted ?
         <UserForm
           index={index}
@@ -116,8 +116,9 @@ const UserForm = ({
 const FormDetails = ({ formData }) => {
 
   return (
-    <div className='bg-gray-800 p-2 rounded-md flex flex-col gap-4 justify-center items-center w-[50%] text-white'>
-      <h1 className="text-white text-3xl font-bold">Form Submitted Successfully!</h1>
+    <div className='bg-gray-800 p-2 rounded-md flex flex-col gap-4 justify-center items-center w-full
+    md:max-w-[50%] max-auto text-white'>
+      <h1 className="text-white text-xl md:text-3xl font-bold">Form Submitted Successfully!</h1>
       <span className="text-lg">Name: {formData.name}</span>
       <span className="text-lg">Email: {formData.email}</span>
       <span className="text-lg">DOB: {formData.dob}</span>

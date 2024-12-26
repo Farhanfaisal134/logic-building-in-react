@@ -37,6 +37,9 @@ import UseCallbackExample from './components/UseCallbackExample';
 import DropdownTextbox from './components/DropdownTextbox';
 import ControlledInput from './components/ControlledInput';
 import UncontrolledInput from './components/UncontrolledInput';
+import DigitalClock from './components/DigitalClock';
+import CheckBoxes from './components/CheckBoxes';
+import Notifications from './components/Notifications';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 const App = () => {
@@ -110,18 +113,17 @@ const App = () => {
       {/* Q=> 32 */}
       {/* <UseCallbackExample /> */}
       {/* Q=> 33 */}
-      {/* Error Boundry */}
+      {/* <CheckBoxes /> */}
       {/* Q=> 34 */}
       {/* <DropdownTextbox /> */}
       {/* Q=> 35 */}
-      {/* Pure Com */}
+      {/* <DigitalClock /> */}
       {/* Q=> 36 */}
       {/* <ControlledInput />
       <UncontrolledInput /> */}
       {/* Q=> 37 */}
-      {/* Custom Hooks */}
+      {/* <Notifications /> */}
       {/* Q=> 38 */}
-      {/* Model Popup */}
       {/* Q=> 39 */}
       {/* Q=> 40 */}
       {/* Q=> 41 */}
