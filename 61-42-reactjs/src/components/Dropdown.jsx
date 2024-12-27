@@ -1,9 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from 'react'
 
-const App = () => {
-  const [isOpen, setIsOpen] = useState(false); // Dropdown visibility state
-  const [activeIndex, setActiveIndex] = useState(-1); // Tracks the active option
-  const menuRef = useRef(null); // Reference to the dropdown menu items
+const Dropdown = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const menuRef = useRef(null);
 
   const options = ["Option 1", "Option 2", "Option 3"];
 
@@ -69,7 +69,7 @@ const App = () => {
                   ? "bg-blue-100 text-blue-700"
                   : "hover:bg-gray-100"
                   }`}
-                onMouseEnter={() => setActiveIndex(index)} // Highlight on mouse hover
+                onMouseEnter={() => setActiveIndex(index)}
               >
                 {option}
               </li>
@@ -79,6 +79,6 @@ const App = () => {
       </div>
     </div>
   )
-};
+}
 
-export default App;
+export default Dropdown
