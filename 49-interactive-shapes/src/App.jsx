@@ -7,6 +7,7 @@ const App = () => {
   const [grid, setGrid] = useState(
     Array.from({ length: 3 }, () => new Array(3).fill(false))
   );
+  
   const queue = useRef([]);
   const timerId = useRef([]);
   const [isQueueFull, setIsQueueFull] = useState(false);

@@ -29,7 +29,6 @@ const App = () => {
   const [selectedOptions, setSelectedOptions] = useState(
     new Array(questions.length).fill(null)
   );
-
   const [score, setScore] = useState(0);
 
   const handleSelectedOption = (option) => {

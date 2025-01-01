@@ -49,6 +49,7 @@ import InfiniteHorizantalScroll from './components/InfiniteHorizantalScroll';
 import CountDownTimer from './components/CountDownTimer';
 import ToggleSwitchButton from './components/ToggleSwitchButton';
 import Calculator from './components/Calculator';
+import GetRandomCircles from './components/GetRandomCircles';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 const App = () => {
@@ -157,6 +158,7 @@ const App = () => {
       {/* Q=> 49 */}
       {/* <Calculator /> */}
       {/* Q=> 50 */}
+      {/* <GetRandomCircles /> */}
     </div>
   )
 };

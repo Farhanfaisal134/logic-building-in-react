@@ -56,7 +56,6 @@ const App = () => {
   function handleInput(e) {
     const key = e.target.id;
     const value = e.target.value;
-    console.log(key, value);
 
     const copyFormData = { ...formData };
     copyFormData[key].value = value;

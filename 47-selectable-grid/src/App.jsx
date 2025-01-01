@@ -43,7 +43,6 @@ const App = () => {
         selectedGrid.push([i, j].join(''));
       }
     };
-
     let copyMat = [...twoDMatrix];
     copyMat = copyMat.map((item) => {
       const { pos } = item;

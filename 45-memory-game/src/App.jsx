@@ -74,7 +74,7 @@ const App = () => {
             <div
               key={i}
               className={`w-16 h-16 sm:w-24 sm:h-20 flex justify-center items-center text-lg font-bold 
-                cursor-pointer shadow-md 
+                cursor-pointer
                 ${getClassName(num, i)}`}
               onClick={() => handleClick(num, i)}
             >

@@ -30,7 +30,7 @@ const App = () => {
     } else if (direction === 'RIGHT') {
       const updatedList = checkedList(rightItems, id, checked);
       setRightItems(updatedList);
-    }
+    };
   };
 
   const resetItems = (list) => {
@@ -62,7 +62,7 @@ const App = () => {
           {leftItems.map(({ title, id, checked }) => (
             <div
               onClick={() => handleClick(id, checked, 'LEFT')}
-              className={`w-full p-2 text-center rounded-md bg-gray-900 text-white ${checked && 'bg-blue-600'
+              className={`w-full p-2 text-center rounded-md text-white ${checked ? 'bg-blue-600' : "bg-gray-900"
                 }`}
               id={id}
               key={id}
@@ -89,7 +89,7 @@ const App = () => {
           {rightItems.map(({ title, id, checked }) => (
             <div
               onClick={() => handleClick(id, checked, 'RIGHT')}
-              className={`w-full text-center p-2 rounded-md bg-gray-900 text-white ${checked && 'bg-blue-600'
+              className={`w-full text-center p-2 rounded-md text-white ${checked ? 'bg-blue-600' : "bg-gray-900"
                 }`}
               id={id}
               key={id}

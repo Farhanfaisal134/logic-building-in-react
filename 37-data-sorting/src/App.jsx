@@ -20,7 +20,7 @@ const App = () => {
       setLoading(false);
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchListOfUsers();
@@ -38,7 +38,7 @@ const App = () => {
       );
     }
     setUsers(cpyUsers);
-  }
+  };
 
   useEffect(() => {
     handleSort(users);

@@ -52,6 +52,6 @@ const App = () => {
       Drag Me
     </div>
   )
-}
+};
 
-export default App
+export default App;

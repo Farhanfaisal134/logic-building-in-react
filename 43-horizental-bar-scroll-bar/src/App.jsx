@@ -13,7 +13,7 @@ const App = () => {
   const scrollLeft = () => {
     if (scrollContainer.current) {
       scrollContainer.current.scrollBy({
-        left: -200,
+        left: 200,
         behavior: "smooth",
       });
     };
@@ -69,7 +69,7 @@ const App = () => {
         {arr.map((item, index) => (
           <p
             key={index}
-            className="flex-shrink-0 w-48 h-24 bg-gray-600 text-xl text-white flex justify-center items-center rounded-lg shadow-md"
+            className="flex-shrink-0 w-52 h-24 bg-gray-600 text-xl text-white flex justify-center items-center rounded-lg shadow-md"
           >
             {item}
           </p>
