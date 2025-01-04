@@ -16,6 +16,6 @@ const Suggestions = ({ handleClick, data }) => {
           : null}
     </ul>
   )
-}
+};
 
-export default Suggestions
+export default Suggestions;

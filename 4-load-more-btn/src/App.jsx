@@ -10,27 +10,23 @@ const App = () => {
   async function fetchProducts() {
     try {
       setLoading(true);
-
+      
       const response = await fetch(
         `https://dummyjson.com/products?limit=10&skip=${count === 0 ? 0 : count * 10
         }`
       );
       const result = await response.json();
       if (result && result.products && result.products.length) {
-        const uniqueProducts = result.products.filter(
-          (newProduct) =>
-            !products.some(
-              (existingProduct) => newProduct.id === existingProduct.id
-            )
-        );
+        const uniqueProducts = result.products.filter((newProduct) =>
+          !products.some((existingProduct) => newProduct.id === existingProduct.id));
         setProducts((prevData) => [...prevData, ...uniqueProducts]);
-      }
+      };
       setLoading(false);
     } catch (error) {
       setError(error.message);
       setLoading(false);
-    }
-  }
+    };
+  };
 
   useEffect(() => {
     fetchProducts();

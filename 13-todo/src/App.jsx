@@ -53,7 +53,7 @@ const App = () => {
       setFilteredTodos(todos);
     } else if (filter === "completed") {
       setFilteredTodos(todos.filter((todo) => todo.isCompleted));
-    }
+    };
   };
 
   useEffect(() => {

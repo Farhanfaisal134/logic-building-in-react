@@ -24,10 +24,8 @@ const App = () => {
     } catch (error) {
       setLoading(false);
       console.log(e);
-    }
+    };
   };
-
-  console.log(currentSelectedCategory);
 
   useEffect(() => {
     fetchProducts();

@@ -28,6 +28,6 @@ const StrengthChecker = ({ password = '' }) => {
       Strength: <span style={{ fontWeight: "bold" }}>{passwordStrength}</span>
     </div>
   )
-}
+};
 
-export default StrengthChecker
+export default StrengthChecker;

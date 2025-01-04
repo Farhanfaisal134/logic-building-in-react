@@ -18,7 +18,7 @@ const App = () => {
 
   function handleScrollToBottom() {
     ref.current.scrollIntoView({ behavior: "smooth" });
-  }
+  };
 
   return (
     <div className="w-full min-h-screen bg-gray-900 text-white flex flex-col items-center py-4">

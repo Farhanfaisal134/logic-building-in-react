@@ -27,20 +27,18 @@ const App = () => {
   useEffect(() => {
     if (isPlaying) {
       const interval = setInterval(() => {
-        setTrackProgress(
-          (audioRef.current.currentTime / (audioRef.current.duration || 1)) * 100
-        );
+        setTrackProgress((audioRef.current.currentTime / (audioRef.current.duration || 1)) * 100);
       }, 1000);
 
       return () => clearInterval(interval);
-    }
+    };
   }, [isPlaying]);
 
   useEffect(() => {
     setTrackProgress(0);
     if (isPlaying) {
       audioRef.current.play();
-    }
+    };
   }, [currentMusicTrack]);
 
   function handlePauseAndPlay() {
@@ -56,9 +54,7 @@ const App = () => {
     if (getDirection === "forward") {
       SetCurrentMusicTrack((prevTrack) => (prevTrack + 1) % tracks.length);
     } else if (getDirection === "backward") {
-      SetCurrentMusicTrack((prevTrack) =>
-        prevTrack === 0 ? tracks.length - 1 : prevTrack - 1
-      );
+      SetCurrentMusicTrack((prevTrack) => prevTrack === 0 ? tracks.length - 1 : prevTrack - 1);
     };
     setTimeout(() => audioRef.current.play(), 100); // Auto-play new track
     setIsPlaying(true);

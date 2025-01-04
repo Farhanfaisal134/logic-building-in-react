@@ -25,7 +25,7 @@ const useWindowResize = () => {
     };
   }, [])
 
-  return { windowSize }
+  return { windowSize };
 };
 
 export default useWindowResize

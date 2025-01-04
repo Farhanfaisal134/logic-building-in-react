@@ -59,8 +59,7 @@ const App = () => {
 
   return (
     <div
-      className="w-full max-w-2xl mx-auto bg-[#f9f9f9] 
-  flex flex-col justify-center items-center shadow-md rounded-lg px-5 py-8"
+      className="w-full max-w-2xl mx-auto bg-[#f9f9f9] flex flex-col justify-center items-center shadow-md rounded-lg px-5 py-8"
     >
       <div className="w-full flex flex-col gap-2">
         {
@@ -81,7 +80,9 @@ const App = () => {
             )
         }
         <div>
-          {showDropdown && filtredUsers.length > 0 && < Suggestions handleClick={handleClick} data={filtredUsers} />}
+          {
+            showDropdown && filtredUsers.length > 0 && <Suggestions handleClick={handleClick} data={filtredUsers} />
+          }
         </div>
       </div>
     </div>

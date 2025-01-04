@@ -29,6 +29,7 @@ const App = () => {
       [0, 3, 6],
       [1, 4, 7],
     ];
+
     for (let i = 0; i < winningPatterns.length; i++) {
       const [x, y, z] = winningPatterns[i];
       if (squares[x] &&

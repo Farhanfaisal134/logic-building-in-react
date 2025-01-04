@@ -13,7 +13,7 @@ const usePasswordGenerator = () => {
       setErrorMessage("Select at least one option.");
       setPassword("");
       return;
-    }
+    };
 
     selectedOption.forEach((option) => {
       switch (option.title) {
@@ -40,10 +40,10 @@ const usePasswordGenerator = () => {
     };
 
     setPassword(generatedPassword);
-    setErrorMessage('')
-  }
+    setErrorMessage('');
+  };
 
-  return { password, errorMesssage, generatePassword }
-}
+  return { password, errorMesssage, generatePassword };
+};
 
-export default usePasswordGenerator
+export default usePasswordGenerator;

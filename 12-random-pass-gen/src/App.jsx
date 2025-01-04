@@ -39,14 +39,12 @@ const App = () => {
         {password && (
           <div className='flex flex-col sm:flex-row sm:justify-between items-center gap-2'>
             <div className="text-2xl font-medium">{password}</div>
-            <Button
-              text={copied ? "Copied" : "Copy"}
-              onClick={handleCopy}
-              className="text-sm sm:text-xl sm:font-bold bg-gray-700 rounded-md px-2 sm:px-4 py-2"
-            />
+            <button className="text-sm sm:text-xl sm:font-bold bg-gray-700 rounded-md px-2 sm:px-4 py-2"
+              onClick={handleCopy}>
+              {copied ? "Copied" : "Copy"}
+            </button>
           </div>
         )}
-
         {/* Character Length */}
         <div className='flex flex-col gap-4'>
           <span className='flex justify-between text-xl sm:text-2xl'>
@@ -61,33 +59,32 @@ const App = () => {
             onChange={(e) => setLength(e.target.value)}
           />
         </div>
-
         {/* Checkboxes */}
         <div className="grid md:grid-cols-2 gap-4 ">
           {
             checkboxData.map((checkbox, index) => {
               return (
-                <Checkbox
-                  key={index}
-                  title={checkbox.title}
-                  onChange={() => handleCheckboxChange(index)}
-                  state={checkbox.state}
-                />
+                <div className='flex gap-2 md:text-2xl items-center'>
+                  <input
+                    key={index}
+                    type='checkbox'
+                    onChange={() => handleCheckboxChange(index)}
+                    checked={checkbox.state}
+                    className="md:w-6 md:h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                  />
+                  <label>{checkbox.title}</label>
+                </div>
               )
             })
           }
         </div>
         {/* Strength */}
         <StrengthChecker password={password} />
-
-        {/* Error Handling */}
         {errorMesssage && <div className="text-red-600 text-2xl font-bold">{errorMesssage}</div>}
-
-        <Button
-          text="Generate Password"
-          onClick={() => generatePassword(checkboxData, length)}
-          className="px-4 py-2 md:px-8 md:py-5 mx-auto bg-gray-500 rounded-md font-bold"
-        />
+        <button className="px-4 py-2 md:px-8 md:py-5 mx-auto bg-gray-500 rounded-md font-bold"
+          onClick={() => generatePassword(checkboxData, length)}>
+          Generate Password
+        </button>
       </div>
     </div>
   )

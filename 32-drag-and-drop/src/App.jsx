@@ -49,7 +49,7 @@ const App = () => {
           onDragStart={(event) => onDragStart(event, todoItem.id)}
           draggable
           key={todoItem.id}
-          className="px-4 py-2 bg-yellow-400 rounded-sm shadow-sm text-xl font-bold"
+          className="px-2 md:px-4 py-2 bg-yellow-400 rounded-sm shadow-sm text-sm md:text-xl font-bold"
         >
           {todoItem.todo}
         </div>
@@ -67,18 +67,18 @@ const App = () => {
           <div
             onDrop={(event) => onDrop(event, "wip")}
             onDragOver={(event) => event.preventDefault()}
-            className="flex flex-col gap-4 border p-4"
+            className="flex flex-col gap-4 border p-2 md:p-4"
           >
-            <h3 className="text-2xl font-bold">In Progress</h3>
+            <h3 className="md:text-2xl font-bold">In Progress</h3>
             {renderTodos("wip")}
           </div>
           {/* completed */}
           <div
             onDrop={(event) => onDrop(event, "completed")}
             onDragOver={(event) => event.preventDefault()}
-            className="flex flex-col gap-4 border p-4"
+            className="flex flex-col gap-4 border p-2 md:p-4"
           >
-            <h3 className="text-2xl font-bold">Completed</h3>
+            <h3 className="md:text-2xl font-bold">Completed</h3>
             {renderTodos("completed")}
           </div>
         </div>

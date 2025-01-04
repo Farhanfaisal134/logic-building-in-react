@@ -67,7 +67,7 @@ const App = () => {
       top: pos,
       behavior: "smooth",
     });
-  }
+  };
 
   return (
     <div style={{ textAlign: "center" }}>

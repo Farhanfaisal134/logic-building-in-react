@@ -15,6 +15,8 @@ const App = () => {
       },
     );
     const result = await apiResponse.json();
+    console.log(result);
+
     const calculatedRate = result?.rates[toCurrency];
     setExchangeRate(calculatedRate);
     setConvertedAmount((amount * calculatedRate).toFixed(2))

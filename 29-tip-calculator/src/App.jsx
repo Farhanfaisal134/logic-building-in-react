@@ -43,31 +43,36 @@ const App = () => {
           <label className="flex items-start text-2xl font-semibold">
             Bill Amount:
           </label>
-          <Input
+          <input
             type="number"
             value={billAmount}
             onChange={(e) => setBillAmount(e.target.value)}
+            className='w-full p-2 border border-gray-100 rounded-md bg-white outline-none text-2xl'
           />
         </div>
         <div className="grid grid-cols-2 items-center font-semibold">
           <label className="flex items-start text-2xl">Tip Percentage:</label>
-          <Input
+          <input
             type="number"
             value={tipPercentage}
             onChange={(e) => setTipPercentage(e.target.value)}
+            className='w-full p-2 border border-gray-100 rounded-md bg-white outline-none text-2xl'
           />
         </div>
         <div className="grid grid-cols-2 items-center font-semibold">
           <label className="flex items-start text-2xl">Number Of People:</label>
-          <Input
+          <input
             type="number"
             value={splitCount}
             onChange={(event) => setSplitCount(event.target.value)}
+            className='w-full p-2 border border-gray-100 rounded-md bg-white outline-none text-2xl'
           />
         </div>
         <div className="w-fit mx-auto mt-4">
-          <Button text="Calcuate Tip" onClick={handleCalculteTip} />
+          <button onClick={handleCalculteTip}
+            className='px-4 py-2 rounded-md bg-gray-700 text-white text-xl'>Calcuate Tip</button>
         </div>
+
         {errorMsg ? (
           <p className="text-red-500 font-bold text-xl">{errorMsg}</p>
         ) : null}

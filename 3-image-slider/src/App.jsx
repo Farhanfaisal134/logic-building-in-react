@@ -12,12 +12,11 @@ const App = ({ url = "https://picsum.photos/v2/list", limit = 5, page = 1 }) => 
   async function fetchImages(getUrl) {
     try {
       setLoading(true);
-
       const response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      };
 
       const data = await response.json();
 
@@ -29,15 +28,15 @@ const App = ({ url = "https://picsum.photos/v2/list", limit = 5, page = 1 }) => 
       setErrorMsg(e.message);
       setLoading(false);
     }
-  }
+  };
 
   function handlePrevious() {
     setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  }
+  };
 
   function handleNext() {
     setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  }
+  };
 
   useEffect(() => {
     if (url !== "") fetchImages(url);
@@ -56,19 +55,19 @@ const App = ({ url = "https://picsum.photos/v2/list", limit = 5, page = 1 }) => 
 
   function pauseInterval() {
     clearInterval(intervalRef.current);
-  }
+  };
 
   function resumeInterval() {
     intervalRef.current = setInterval(handleNext, 2000);
-  }
+  };
 
   if (loading) {
     return <div className="text-center text-lg">Loading data! Please wait...</div>;
-  }
+  };
 
   if (errorMsg !== null) {
     return <div className="text-center text-red-500">Error occurred! {errorMsg}</div>;
-  }
+  };
 
   return (
     <div

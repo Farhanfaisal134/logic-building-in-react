@@ -6,7 +6,7 @@ const App = () => {
   const [copyMessage, setCopyMessage] = useState("");
 
   function randomColorUtilty(length) {
-    return Math.floor(Math.random() * length)
+    return Math.floor(Math.random() * length);
   };
 
   function handleCreateRandomHexColor() {
@@ -27,11 +27,11 @@ const App = () => {
 
   useEffect(() => {
     if (typeOfColor === "rgb") {
-      handleCreateRandomRgbColor()
+      handleCreateRandomRgbColor();
     } else {
-      handleCreateRandomHexColor()
-    }
-  }, [typeOfColor])
+      handleCreateRandomHexColor();
+    };
+  }, [typeOfColor]);
 
   function cpyColor() {
     navigator.clipboard.writeText(color)
@@ -58,7 +58,7 @@ const App = () => {
         <h2>{typeOfColor}</h2>
         <h1 onClick={cpyColor}>{color}</h1>
       </div>
-    </div >
+    </div>
   )
 };
 

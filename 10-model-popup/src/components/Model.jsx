@@ -3,17 +3,15 @@ import React, { useEffect, useRef } from "react";
 const Model = ({ id, header, body, footer, onClose }) => {
   const modalRef = useRef();
 
-  //Handle OutSide Click;
   useEffect(() => {
     function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
       };
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (

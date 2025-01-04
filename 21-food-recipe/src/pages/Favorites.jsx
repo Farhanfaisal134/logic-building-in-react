@@ -20,8 +20,8 @@ const Favorites = () => {
             </div>
           )
       }
-    </div >
+    </div>
   )
-}
+};
 
-export default Favorites
+export default Favorites;
