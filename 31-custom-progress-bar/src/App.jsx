@@ -1,31 +1,35 @@
-import React, { useEffect, useRef, useState } from 'react'
-import ProgressBar from './ProgressBar';
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     if (progress < 100) {
-      const interval = setInterval(() => {
-        setProgress((prevProgress) => Math.min(prevProgress + 1, 100));
+      let interval = setInterval(() => {
+        setProgress((prev) => Math.min(prev + 1))
       }, 100);
-
-      return () => clearInterval(interval);
+      return () => clearInterval(interval)
     };
+
   }, [progress]);
 
+  function handleReset() {
+    setProgress(0)
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen max-w-3xl mx-auto gap-4">
-      <h1 className="text-2xl font-bold mb-4">Animated Progress Bar with Counting</h1>
+    <div className="pt-10 flex justify-center items-center flex-col gap-3">
+      <div className="w-96 h-8 bg-blue-300 rounded-lg relative">
+        <div className='absolute h-full bg-blue-700 rounded-lg overflow-hidden' style={{ width: `${progress}%` }}>
+          <span className="absolute inset-0 flex justify-end items-center text-white font-semibold">
+            {progress}%
+          </span>
+        </div>
+      </div>
 
-      <ProgressBar progress={progress} />
-
-      <button onClick={() => setProgress(0)}
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-200">
-        Reset Progress
-      </button>
+      <button className='bg-blue-500 p-2 text-xl text-white rounded-md' onClick={handleReset}>Reset Bar</button>
     </div>
-  );
+  )
 };
 
 export default App;

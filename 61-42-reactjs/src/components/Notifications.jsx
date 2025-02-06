@@ -19,6 +19,7 @@ const Notifications = () => {
       message: "You have a new alert!",
       type: randomType,
     };
+    
     setNotifications((prev) => [newNotification, ...prev]);
   };
 

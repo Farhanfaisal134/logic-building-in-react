@@ -8,6 +8,7 @@ const data = [
 
 const App = () => {
   const [sortConfig, setSortConfig] = useState({ key: "id", direction: "asc" });
+  console.log(sortConfig);
 
   const handleSort = (key) => {
     const direction = sortConfig.key === key && sortConfig.direction === "asc" ? "desc" : "asc"
@@ -15,14 +16,14 @@ const App = () => {
   };
 
   const sortedData = [...data].sort((a, b) => {
-    if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === "asc" ? -1 : 1
+    if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === "asc" ? -1 : 1;
     if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === "asc" ? 1 : -1;
   });
 
   return (
     <div className="w-full min-h-screen bg-gray-900 flex flex-col items-center p-4 md:p-8">
       <h1 className="text-white text-2xl mb-4 font-bold">Data Table</h1>
-      <table className="w-full max-w-2xl bg-gray-700 text-white rounded-lg overflow-hidden">
+      <table className="w-full max-w-4xl bg-gray-700 text-white rounded-lg overflow-hidden">
         <thead>
           <tr>
             <th className={`p-2 cursor-pointer ${sortConfig.direction === "asc" ? "text-green-600" : "text-red-600"}`}

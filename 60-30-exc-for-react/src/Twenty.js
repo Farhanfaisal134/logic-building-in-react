@@ -55,12 +55,14 @@ export default function Twenty() {
       ))}
       <h2>Product List</h2>
       <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            {product.name}{" "}
-            <button onClick={() => addToCart(product)}> Add To Cart </button>
-          </li>
-        ))}
+        {
+          products.map((product) => (
+            <li key={product.id}>
+              {product.name}{" "}
+              <button onClick={() => addToCart(product)}> Add To Cart </button>
+            </li>
+          ))
+        }
       </ul>
     </div>
   );

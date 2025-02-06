@@ -4,11 +4,11 @@ import Button from "./components/Button";
 const StepProgressBar = ({ steps, activeStep, setActiveStep }) => {
   function handlePreviousStep() {
     setActiveStep((prevStep) => prevStep - 1);
-  }
+  };
 
   function handleNextStep() {
     setActiveStep((prevStep) => prevStep + 1);
-  }
+  };
 
   return (
     <>
@@ -25,7 +25,6 @@ const StepProgressBar = ({ steps, activeStep, setActiveStep }) => {
             </div>
           ))
           : null}
-        ;
       </div>
       <div className="flex gap-10">
         <Button

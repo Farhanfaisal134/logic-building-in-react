@@ -32,12 +32,14 @@ export function CartProvider({ children }) {
             (item) => item.id !== action.payload,
           ),
         };
+
       default:
         return state;
     }
   };
 
   const [cartState, cartDispatch] = useReducer(cartReducer, initialState);
+
   return (
     <CartContext.Provider value={{ cartState, cartDispatch }}>
       {children}

@@ -35,7 +35,7 @@ const App = () => {
 
   function handleSingleSelection(getCurrentId) {
     setSelected(getCurrentId === selected ? null : getCurrentId);
-  }
+  };
 
   function handleMultiSelection(getCurrentId) {
     let copyState = [...multiple];
@@ -53,8 +53,7 @@ const App = () => {
     <div className="w-full min-h-screen p-4 flex flex-col justify-center items-center bg-gray-700 text-white">
       <h1
         className="mb-3 bg-gray-900 p-3 font-bold cursor-pointer"
-        onClick={() => setEnableMultiSelection(!enableMultiSelection)}
-      >
+        onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
         {enableMultiSelection
           ? "Enable Multi Selection On"
           : "Enable Multi Selection Off"}

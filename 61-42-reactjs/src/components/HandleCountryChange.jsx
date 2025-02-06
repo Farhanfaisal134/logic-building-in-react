@@ -26,22 +26,26 @@ const Dropdowns = () => {
         <option value="" disabled>
           Select Country
         </option>
-        {Object.keys(countries).map((country) => (
-          <option key={country} value={country}>
-            {country}
-          </option>
-        ))}
+        {
+          Object.keys(countries).map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))
+        }
       </select>
 
       <select className="border p-2 block" defaultValue="">
         <option value="" disabled>
           Select State
         </option>
-        {states.map((state) => (
-          <option key={state} value={state}>
-            {state}
-          </option>
-        ))}
+        {
+          states.map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))
+        }
       </select>
     </div>
   );

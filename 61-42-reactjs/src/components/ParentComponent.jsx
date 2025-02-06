@@ -6,7 +6,7 @@ const ParentComponent = () => {
       <ChildComponent data={parentData} /> {/* Data pass kiya */}
     </div>
   );
-}
+};
 
 const ChildComponent = ({ data }) => { // Props ko destructure kiya
   return (
@@ -14,6 +14,6 @@ const ChildComponent = ({ data }) => { // Props ko destructure kiya
       <h2 className="text-lg">{data}</h2> {/* Parent se aaya data display kiya */}
     </div>
   );
-}
+};
 
 export default ParentComponent;

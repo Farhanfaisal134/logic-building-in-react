@@ -26,6 +26,6 @@ const DisplaySelectedRadio = () => {
       />
     </div>
   )
-}
+};
 
-export default DisplaySelectedRadio
+export default DisplaySelectedRadio;

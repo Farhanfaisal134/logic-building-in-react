@@ -12,6 +12,7 @@ const SearchableTable = () => {
       const result = await response.json();
       setData(result.slice(0, 10));
     };
+
     fetchData();
   }, []);
 
@@ -28,7 +29,7 @@ const SearchableTable = () => {
       filtered = [...filtered].sort((a, b) => {
         if (a[sortKey] < b[sortKey]) return sortOrder === "asc" ? -1 : 1;
         if (a[sortKey] > b[sortKey]) return sortOrder === "asc" ? 1 : -1;
-        return 0;
+        return 0; // Yahan jab dono equal hon, toh unka order same rehna chahiye 	8 === 8 => 0 (same order maintain rahega)
       });
     };
 
@@ -61,25 +62,25 @@ const SearchableTable = () => {
           <tr>
             <th
               className="p-2 text-left cursor-pointer"
-              onClick={() => handleSort("id")}
-            >
+              onClick={() => handleSort("id")}>
               ID {sortKey === "id" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
             <th
               className="p-2 text-left cursor-pointer"
-              onClick={() => handleSort("title")}
-            >
+              onClick={() => handleSort("title")}>
               Title {sortKey === "title" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((item) => (
-            <tr key={item.id} className="border-t">
-              <td className="p-2">{item.id}</td>
-              <td className="p-2">{item.title}</td>
-            </tr>
-          ))}
+          {
+            filteredData.map((item) => (
+              <tr key={item.id} className="border-t">
+                <td className="p-2">{item.id}</td>
+                <td className="p-2">{item.title}</td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
     </div>

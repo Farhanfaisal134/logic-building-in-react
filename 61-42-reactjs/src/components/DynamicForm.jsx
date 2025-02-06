@@ -40,7 +40,8 @@ function DynamicForm() {
   const shouldRenderField = (field) => {
     if (field.condition) {
       return formData[field.condition.field] === field.condition.value;
-    }
+    };
+
     return true;
   };
 
@@ -49,42 +50,40 @@ function DynamicForm() {
       <h1 className="text-2xl font-bold mb-4">Dynamic Form</h1>
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 shadow-md rounded-md space-y-4"
-      >
-        {apiResponse.map((field) => {
-          if (!shouldRenderField(field)) return null;
+        className="bg-white p-6 shadow-md rounded-md space-y-4">
+        {
+          apiResponse.map((field) => {
+            if (!shouldRenderField(field)) return null;
 
-          return (
-            <div key={field.id} className="flex flex-col gap-2">
-              <label className="font-semibold">{field.label}</label>
-              {field.type === "checkbox" ? (
-                <input
-                  type={field.type}
-                  name={field.name}
-                  checked={formData[field.name] || false}
-                  onChange={handleChange}
-                  className="w-5 h-5"
-                />
-              ) : (
-                <input
-                  type={field.type}
-                  name={field.name}
-                  value={formData[field.name] || ""}
-                  onChange={handleChange}
-                  className="border p-2 rounded-md"
-                />
-              )}
-              {errors[field.name] && (
-                <span className="text-red-500 text-sm">{errors[field.name]}</span>
-              )}
-            </div>
-          );
-        })}
-
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
-        >
+            return (
+              <div key={field.id} className="flex flex-col gap-2">
+                <label className="font-semibold">{field.label}</label>
+                {field.type === "checkbox" ? (
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    checked={formData[field.name] || false}
+                    onChange={handleChange}
+                    className="w-5 h-5"
+                  />
+                ) : (
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    value={formData[field.name] || ""}
+                    onChange={handleChange}
+                    className="border p-2 rounded-md"
+                  />
+                )}
+                {errors[field.name] && (
+                  <span className="text-red-500 text-sm">{errors[field.name]}</span>
+                )}
+              </div>
+            );
+          })
+        }
+        <button type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md">
           Submit
         </button>
       </form>

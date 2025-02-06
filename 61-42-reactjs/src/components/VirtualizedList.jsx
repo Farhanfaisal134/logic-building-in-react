@@ -5,7 +5,7 @@ const VirtualizedList = ({ height = 400, width = 300, itemHeight = 36 }) => {
 
   const [visibleRange, setVisibleRange] = useState({
     startIndex: 0,
-    endIndex: Math.floor(height / itemHeight),
+    endIndex: Math.floor(height / itemHeight)
   });
 
   const handleScroll = (e) => {
@@ -22,22 +22,22 @@ const VirtualizedList = ({ height = 400, width = 300, itemHeight = 36 }) => {
       <div
         className="overflow-auto bg-gray-600 rounded shadow-lg"
         onScroll={handleScroll}
-        style={{ height, width }}
-      >
+        style={{ height, width }}>
         <div style={{ height: list.length * itemHeight, position: "relative" }}>
-          {visibleItems.map((item, index) => (
-            <div
-              key={visibleRange.startIndex + index}
-              className="absolute top-0 left-0 w-full text-center text-white bg-blue-500 border-b-2
+          {
+            visibleItems.map((item, index) => (
+              <div
+                key={visibleRange.startIndex + index}
+                className="absolute top-0 left-0 w-full text-center text-white bg-blue-500 border-b-2
               border-gray-800 flex items-center justify-center"
-              style={{
-                height: itemHeight,
-                top: (visibleRange.startIndex + index) * itemHeight,
-              }}
-            >
-              {item}
-            </div>
-          ))}
+                style={{
+                  height: itemHeight,
+                  top: (visibleRange.startIndex + index) * itemHeight,
+                }}>
+                {item}
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const App = () => {
   const [grid, setGrid] = useState(
     Array.from({ length: 3 }, () => new Array(3).fill(false))
   );
-  
+
   const queue = useRef([]);
   const timerId = useRef([]);
   const [isQueueFull, setIsQueueFull] = useState(false);
@@ -16,14 +16,14 @@ const App = () => {
     if (timerId.current.length > 0 && flag) return;
     if (grid[rowIdx][colIdx] && flag) return;
 
-    let gridDeepCopy = [...grid]
+    let gridDeepCopy = [...grid];
     gridDeepCopy[rowIdx][colIdx] = flag;
     if (flag) {
       queue.current.push([rowIdx, colIdx]);
       if (queue.current.length === 9) setIsQueueFull(true);
     };
 
-    setGrid(gridDeepCopy)
+    setGrid(gridDeepCopy);
   };
 
   useEffect(() => {

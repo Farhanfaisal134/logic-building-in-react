@@ -10,10 +10,12 @@ const imageReducer = (state, action) => {
       return {
         currentImageIndex: state.currentImageIndex + 1,
       };
+
     case "PREVIOUS_IMAGE":
       return {
         currentImageIndex: state.currentImageIndex - 1,
       };
+
     default:
       return state;
   }

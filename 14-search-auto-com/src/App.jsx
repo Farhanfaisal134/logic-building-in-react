@@ -55,7 +55,7 @@ const App = () => {
   function handleRemove() {
     setSearchParams("")
     setFiltredUsers([]);
-  }
+  };
 
   return (
     <div

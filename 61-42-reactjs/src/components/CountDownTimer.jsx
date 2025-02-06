@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
 const CountDownTimer = () => {
-  const targetDate = '2024-12-31T23:59:59';
+  const targetDate = '2025-12-31T23:59:59';
+
   const calculateTimeLeft = () => {
     const difference = new Date(targetDate) - new Date();
     if (difference > 0) {
       return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        // 1000ms * 60 sec * 60 min * 24 hours = 86400000ms (1 din) 
+        // 29030400000 / 86400000 = 336 days
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / (1000 * 60)) % 60),
         seconds: Math.floor((difference / 1000) % 60),

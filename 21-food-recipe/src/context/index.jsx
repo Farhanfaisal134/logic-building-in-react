@@ -50,7 +50,6 @@ const GlobalState = ({ children }) => {
     localStorage.setItem("favorites", JSON.stringify(favoritesList))
   }, [favoritesList])
 
-
   return (
     <GlobalContext.Provider
       value={{

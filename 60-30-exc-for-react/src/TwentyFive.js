@@ -46,8 +46,7 @@ export default function DraggableBox() {
         transition: "background-color 0.3s",
       }}
       onMouseEnter={(e) => e.target.style.backgroundColor = "#66BB6A"}
-      onMouseLeave={(e) => e.target.style.backgroundColor = "#4CAF50"}
-    >
+      onMouseLeave={(e) => e.target.style.backgroundColor = "#4CAF50"}>
       Drag Me
     </div>
   );

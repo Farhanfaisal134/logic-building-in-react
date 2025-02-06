@@ -7,7 +7,6 @@ const ConditionalStyles = () => {
         backgroundColor: isActive ? "green" : "red", // Conditional styling
         color: "white",
         padding: "10px",
-        borderRadius: "5px",
       }}
     >
       {isActive ? "Active" : "Inactive"}

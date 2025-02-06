@@ -3,7 +3,6 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 
 const MenuItem = ({ item }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
   return (

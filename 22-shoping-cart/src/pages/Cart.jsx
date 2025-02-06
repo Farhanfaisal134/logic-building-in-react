@@ -17,9 +17,11 @@ const Cart = () => {
         <>
           <div className="min-h-[80vh] grid md:grid-cols-2 place-items-center w-full md:max-w-6xl mx-auto">
             <div className="w-full flex flex-col md:p-3">
-              {cart.map((cartItem) => (
-                <CartItem cartItem={cartItem} />
-              ))}
+              {
+                cart.map((cartItem) => (
+                  <CartItem cartItem={cartItem} />
+                ))
+              }
             </div>
 
             <div className="flex flex-col justify-center p-5 space-y-5">

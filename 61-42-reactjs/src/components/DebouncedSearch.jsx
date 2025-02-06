@@ -10,21 +10,26 @@ const debounce = (func, delay) => {
 
 const DebouncedSearch = () => {
   const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState(""); // State for debounced value
 
   const handleSearch = debounce((searchTerm) => {
-    console.log("Searching for:", searchTerm);
+    setDebouncedQuery(searchTerm); // Updating debounced value
   }, 1000);
 
   return (
-    <input
-      type="text"
-      placeholder="Search"
-      onChange={(e) => {
-        setQuery(e.target.value);
-        handleSearch(e.target.value);
-      }}
-      className="border p-2"
-    />
+    <div>
+      <h1>{debouncedQuery}</h1> {/* Displaying debounced query */}
+      <input
+        type="text"
+        placeholder="Search"
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value); // Update query instantly
+          handleSearch(e.target.value); // Debounce updating debouncedQuery
+        }}
+        className="border p-2"
+      />
+    </div>
   );
 };
 

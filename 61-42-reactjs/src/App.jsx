@@ -50,6 +50,7 @@ import CountDownTimer from './components/CountDownTimer';
 import ToggleSwitchButton from './components/ToggleSwitchButton';
 import Calculator from './components/Calculator';
 import GetRandomCircles from './components/GetRandomCircles';
+import StateUpdateEffect from "./components/StateUpdateEffect"
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 const App = () => {
@@ -129,8 +130,8 @@ const App = () => {
       {/* Q=> 35 */}
       {/* <DigitalClock /> */}
       {/* Q=> 36 */}
-      {/* <ControlledInput />
-      <UncontrolledInput /> */}
+      {/* <ControlledInput /> */}
+      {/* <UncontrolledInput /> */}
       {/* Q=> 37 */}
       {/* <Notifications /> */}
       {/* Q=> 38 */}

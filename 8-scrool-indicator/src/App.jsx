@@ -19,7 +19,7 @@ const App = ({ url = "https://dummyjson.com/products?limit=100" }) => {
       setErrorMessage(error.message)
       setLoading(false)
     }
-  }
+  };
 
   useEffect(() => {
     if (url !== '') fetchData(url)
@@ -41,7 +41,6 @@ const App = ({ url = "https://dummyjson.com/products?limit=100" }) => {
       window.removeEventListener("scroll", handleScrollPercentage);
     };
   }, []);
-
 
   return (
     <>

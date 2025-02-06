@@ -1,12 +1,12 @@
-import React, { useReducer } from "react";
+import React, { useState } from "react";
 
 const ForceRender = () => {
-  const [, forceRender] = useReducer((x) => x + 1, 0);
+  const [, setCount] = useState(0);
 
   return (
     <div className="p-4 text-center">
       <button
-        onClick={forceRender}
+        onClick={() => setCount((c) => c + 1)}
         className="bg-blue-500 text-white px-4 py-2 rounded"
       >
         Force Rerender

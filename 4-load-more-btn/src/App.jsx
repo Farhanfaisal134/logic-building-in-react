@@ -7,10 +7,11 @@ const App = () => {
   const [count, setCount] = useState(0);
   const [disableButton, setDisableButton] = useState(false);
 
+
   async function fetchProducts() {
     try {
       setLoading(true);
-      
+
       const response = await fetch(
         `https://dummyjson.com/products?limit=10&skip=${count === 0 ? 0 : count * 10
         }`
@@ -38,11 +39,11 @@ const App = () => {
 
   if (loading) {
     return <div className="text-center text-lg">Loading data! Please wait...</div>;
-  }
+  };
 
   if (error) {
     return <div className="text-center text-red-500">Error: {error}</div>;
-  }
+  };
 
   return (
     <div className="p-6">
