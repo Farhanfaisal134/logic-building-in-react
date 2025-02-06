@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <div className="pt-10 flex justify-center items-center flex-col gap-3">
-      <div className="w-96 h-8 bg-blue-300 rounded-lg relative">
+      <div className="w-72 md:w-2/4 h-8 bg-blue-300 rounded-lg relative">
         <div className='absolute h-full bg-blue-700 rounded-lg overflow-hidden' style={{ width: `${progress}%` }}>
           <span className="absolute inset-0 flex justify-end items-center text-white font-semibold">
             {progress}%
