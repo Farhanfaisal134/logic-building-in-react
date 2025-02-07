@@ -51,6 +51,8 @@ import ToggleSwitchButton from './components/ToggleSwitchButton';
 import Calculator from './components/Calculator';
 import GetRandomCircles from './components/GetRandomCircles';
 import StateUpdateEffect from "./components/StateUpdateEffect"
+import Tooltip from './components/Tooltip';
+import CourseFilter from './components/CourseFilter';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 const App = () => {
@@ -160,6 +162,10 @@ const App = () => {
       {/* <Calculator /> */}
       {/* Q=> 50 */}
       {/* <GetRandomCircles /> */}
+      {/* Q=> 51 */}
+      {/* <Tooltip /> */}
+      {/* Q=> 52 */}
+      {/* <CourseFilter /> */}
     </div>
   )
 };

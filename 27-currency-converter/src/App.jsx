@@ -6,6 +6,9 @@ const App = () => {
   const [toCurrency, setToCurrency] = useState("PKR");
   const [exchangeRate, setExchangeRate] = useState();
   const [convertedAmount, setConvertedAmount] = useState();
+  // Tumhari code ka masla yeh hai ke tum result?.rates.toCurrency likh rahe ho,
+  // jabke toCurrency ek variable hai, na ke ek fixed key.
+  // let toCurrency = "PKR"
 
   async function fetchExchangeRate() {
     const apiResponse = await fetch(
@@ -15,7 +18,7 @@ const App = () => {
       },
     );
     const result = await apiResponse.json();
-    console.log(result);
+    // console.log(result);
 
     const calculatedRate = result?.rates[toCurrency];
     setExchangeRate(calculatedRate);

@@ -26,9 +26,7 @@ const questions = [
 const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState(
-    new Array(questions.length).fill(null)
-  );
+  const [selectedOptions, setSelectedOptions] = useState(Array(questions.length).fill(null));
   const [score, setScore] = useState(0);
 
   const handleSelectedOption = (option) => {
@@ -114,8 +112,7 @@ const App = () => {
           </p>
           <button
             onClick={handleRestartQuiz}
-            className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700"
-          >
+            className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700">
             Restart Quiz
           </button>
         </div>

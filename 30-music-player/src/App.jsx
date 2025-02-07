@@ -42,17 +42,19 @@ const App = () => {
   }, [currentMusicTrack]);
 
   function handlePauseAndPlay() {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
+    setIsPlaying((prev) => {
+      if (!prev) {
+        audioRef.current.play(); // ✅ Jab prev false hoga to play chalega
+      } else {
+        audioRef.current.pause(); // ✅ Jab prev true hoga to pause chalega
+      }
+      return !prev; // ✅ isPlaying ko toggle kar raha hai
+    });
   };
 
   function handleSkipTrack(getDirection) {
     if (getDirection === "forward") {
-      SetCurrentMusicTrack((prevTrack) => (prevTrack + 1) % tracks.length);
+      SetCurrentMusicTrack((prevTrack) => prevTrack === tracks.length - 1 ? prevTrack === 0 : prevTrack + 1);
     } else if (getDirection === "backward") {
       SetCurrentMusicTrack((prevTrack) => prevTrack === 0 ? tracks.length - 1 : prevTrack - 1);
     };
