@@ -14,10 +14,12 @@ function DynamicForm() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    setFormData((prev) => (
+      {
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      }
+    ));
   };
 
   const handleSubmit = (e) => {

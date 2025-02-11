@@ -15,7 +15,6 @@ import ConditionalRendering from './components/ConditionalRendering';
 import ConditionalStyles from './components/ConditionalStyles';
 import ShowHideData from "./components/ShowHideData"
 import RadioButtons from "./components/RadioButtons"
-import DisplaySelectedRadio from './components/DisplaySelectedRadio';
 import FirstRenderMethod from './components/FirstRenderMethod';
 import DisplayObjectKeysValues from "./components/DisplayObjectKeysValues"
 import ReRenderOnChange from "./components/ReRenderOnChange"
@@ -53,8 +52,11 @@ import GetRandomCircles from './components/GetRandomCircles';
 import StateUpdateEffect from "./components/StateUpdateEffect"
 import Tooltip from './components/Tooltip';
 import CourseFilter from './components/CourseFilter';
+import MouseTracker from './components/MouseTracker';
+import Chessboard from './Chessboard';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
+// TechdevGuru
 const App = () => {
   return (
     <div>
@@ -69,8 +71,8 @@ const App = () => {
       {/* Q=> 5 */}
       {/* <Dropdown /> */}
       {/* Q=> 6 */}
-      {/* <Navbar />
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Navbar /> */}
+      {/* <Suspense fallback={<h1>Loading...</h1>}>
         <LazyComponent />
       </Suspense> */}
       {/* Q=> 7 */}
@@ -86,7 +88,14 @@ const App = () => {
       {/* Q=> 12 */}
       {/* <RadioButtons /> */}
       {/* Q=> 13 */}
-      {/* <DisplaySelectedRadio /> */}
+      {/* Q=> 53 Render Props ek pattern hai jo components ke beech logic share karne ke liye use hota hai */}
+      {/* <MouseTracker
+        render={(pos) => (
+          <h1>
+            Mouse Position: {pos.x}, {pos.y}
+          </h1>
+        )}
+      /> */}
       {/* Q=> 14 */}
       {/* <FirstRenderMethod /> */}
       {/* Q=> 15 */}
@@ -166,6 +175,8 @@ const App = () => {
       {/* <Tooltip /> */}
       {/* Q=> 52 */}
       {/* <CourseFilter /> */}
+      {/* Q=> 53 */}
+      {/* <Chessboard /> */}
     </div>
   )
 };

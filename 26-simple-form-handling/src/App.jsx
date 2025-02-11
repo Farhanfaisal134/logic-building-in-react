@@ -22,7 +22,7 @@ const App = () => {
     }))
   };
 
-  const submitHandler = () => {
+  const submitHandler = (e) => {
     e.preventDefault()
 
     if (formData.password.length < 8) {

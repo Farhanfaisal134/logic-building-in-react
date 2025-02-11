@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const App = () => {
-  const [activeLight, setActiveLight] = useState < Light > ("red");
+  const [activeLight, setActiveLight] = useState("red");
 
   useEffect(() => {
     const interval = setInterval(() => {
