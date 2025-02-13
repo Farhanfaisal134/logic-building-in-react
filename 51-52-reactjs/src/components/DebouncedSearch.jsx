@@ -1,20 +1,16 @@
-import React, { useState } from "react";
-
-const debounce = (func, delay) => {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => func(...args), delay);
-  };
-};
+import React, { useEffect, useState } from "react";
 
 const DebouncedSearch = () => {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState(""); // State for debounced value
 
-  const handleSearch = debounce((searchTerm) => {
-    setDebouncedQuery(searchTerm); // Updating debounced value
-  }, 1000);
+  useEffect(() => {
+    let interval = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 2000);
+
+    return () => clearTimeout(interval)
+  }, [query]);
 
   return (
     <div>
@@ -23,10 +19,7 @@ const DebouncedSearch = () => {
         type="text"
         placeholder="Search"
         value={query}
-        onChange={(e) => {
-          setQuery(e.target.value); // Update query instantly
-          handleSearch(e.target.value); // Debounce updating debouncedQuery
-        }}
+        onChange={(e) => setQuery(e.target.value)}
         className="border p-2"
       />
     </div>

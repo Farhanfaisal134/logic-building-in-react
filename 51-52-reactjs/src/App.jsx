@@ -54,6 +54,8 @@ import Tooltip from './components/Tooltip';
 import CourseFilter from './components/CourseFilter';
 import MouseTracker from './components/MouseTracker';
 import Chessboard from './Chessboard';
+import CheckBoxExample from './components/CheckBoxExample';
+import RadioButtonExample from './components/RadioButtonExample';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 // TechdevGuru
@@ -115,7 +117,7 @@ const App = () => {
       {/* Q=> 22 */}
       {/* <Parent /> */}
       {/* Q=> 23 */}
-      {/* <DebouncedSearch /> */}
+      <DebouncedSearch />
       {/* Q=> 24 */}
       {/* <FetchDataComponent /> */}
       {/* Q=> 25 */}
@@ -133,7 +135,7 @@ const App = () => {
       {/* Q=> 31 */}
       {/* <ExpensiveCalculation /> */}
       {/* Q=> 32 */}
-      {/* <UseCallbackExample /> */}
+      <UseCallbackExample />
       {/* Q=> 33 */}
       {/* <CheckBoxes /> */}
       {/* Q=> 34 */}
@@ -177,6 +179,15 @@ const App = () => {
       {/* <CourseFilter /> */}
       {/* Q=> 53 */}
       {/* <Chessboard /> */}
+      {/* Q=> 54 */}
+      {/* <CheckBoxExample /> */}
+      {/* Q=> 55 */}
+      {/* <RadioButtonExample /> */}
+      {/* Q=> 56 */}
+      {/* Q=> 57 */}
+      {/* Q=> 58 */}
+      {/* Q=> 59 */}
+      {/* Q=> 60 */}
     </div>
   )
 };

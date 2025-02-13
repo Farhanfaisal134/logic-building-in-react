@@ -6,7 +6,7 @@ const ExpensiveCalculation = () => {
 
   const expensiveResult = useMemo(() => {
     console.log("Calculating...");
-    return count ** 2;
+    return count ** 2; // 4*4
   }, [count]);
 
   return (
