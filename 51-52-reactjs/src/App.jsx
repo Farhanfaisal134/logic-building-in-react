@@ -53,9 +53,26 @@ import StateUpdateEffect from "./components/StateUpdateEffect"
 import Tooltip from './components/Tooltip';
 import CourseFilter from './components/CourseFilter';
 import MouseTracker from './components/MouseTracker';
-import Chessboard from './Chessboard';
+import Chessboard from './components/Chessboard';
 import CheckBoxExample from './components/CheckBoxExample';
 import RadioButtonExample from './components/RadioButtonExample';
+import StartRating from './components/StartRating';
+import Accordian from './components/Accordian';
+import ImageCarousel from './components/ImageCarosal';
+import InfiniteScroll from './components/InfiniteScroll';
+import LoadMoreData from './components/LoadMoreData';
+import ScrollIndicator from './components/ScrollIndicator';
+import ClickTabs from './components/ClickTabs';
+import OutsideClick from './components/OutsideClick';
+import WindowResize from './components/WindowResize';
+import ScrollTopToBottom from './components/ScrollTopToBottom';
+import RandomColorGen from './components/RandomColorGen';
+import TraficLights from './components/TraficLights';
+import Throttling from './components/Tharotling';
+import DragBox from './components/DragBox';
+import IntractiveShapes from './components/IntractiveShapes';
+import MemoryGame from './components/MemoryGame';
+import Otp from './components/Otp';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 // TechdevGuru
@@ -117,7 +134,7 @@ const App = () => {
       {/* Q=> 22 */}
       {/* <Parent /> */}
       {/* Q=> 23 */}
-      <DebouncedSearch />
+      {/* <DebouncedSearch /> */}
       {/* Q=> 24 */}
       {/* <FetchDataComponent /> */}
       {/* Q=> 25 */}
@@ -135,7 +152,7 @@ const App = () => {
       {/* Q=> 31 */}
       {/* <ExpensiveCalculation /> */}
       {/* Q=> 32 */}
-      <UseCallbackExample />
+      {/* <UseCallbackExample /> */}
       {/* Q=> 33 */}
       {/* <CheckBoxes /> */}
       {/* Q=> 34 */}
@@ -184,10 +201,39 @@ const App = () => {
       {/* Q=> 55 */}
       {/* <RadioButtonExample /> */}
       {/* Q=> 56 */}
+      {/* <StartRating /> */}
       {/* Q=> 57 */}
+      {/* <Accordian /> */}
       {/* Q=> 58 */}
+      {/* <ImageCarousel /> */}
       {/* Q=> 59 */}
+      {/* <InfiniteScroll /> */}
       {/* Q=> 60 */}
+      {/* <LoadMoreData /> */}
+      {/* Q=> 61 */}
+      {/* <ScrollIndicator /> */}
+      {/* Q=> 62 */}
+      {/* <ClickTabs /> */}
+      {/* Q=> 63 */}
+      {/* <OutsideClick /> */}
+      {/* Q=> 64 */}
+      {/* <WindowResize /> */}
+      {/* Q=> 65 */}
+      {/* <ScrollTopToBottom /> */}
+      {/* Q=> 66 */}
+      {/* <RandomColorGen /> */}
+      {/* Q=> 67 */}
+      {/* <TraficLights /> */}
+      {/* Q=> 68 */}
+      {/* <Throttling /> */}
+      {/* Q=> 69 */}
+      {/* <DragBox /> */}
+      {/* Q=> 70 */}
+      {/* <IntractiveShapes /> */}
+      {/* Q=> 71 */}
+      {/* <MemoryGame /> */}
+      {/* Q=> 72 */}
+      {/* <Otp /> */}
     </div>
   )
 };
