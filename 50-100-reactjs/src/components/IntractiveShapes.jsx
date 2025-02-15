@@ -5,6 +5,7 @@ const IntractiveShapes = () => {
   const queue = useRef([]);
   const timerId = useRef([]);
   const [isQueueFull, setIsQueueFull] = useState(false);
+  console.log(queue);
 
   const handleOnClick = (rowIdx, colIdx, flag) => {
     if (timerId.current.length > 0 && flag) return;

@@ -73,6 +73,7 @@ import DragBox from './components/DragBox';
 import IntractiveShapes from './components/IntractiveShapes';
 import MemoryGame from './components/MemoryGame';
 import Otp from './components/Otp';
+import ClickCounter from './components/ClickCounter';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 // TechdevGuru
@@ -234,6 +235,10 @@ const App = () => {
       {/* <MemoryGame /> */}
       {/* Q=> 72 */}
       {/* <Otp /> */}
+      {/* Q=> 73 */}
+      {/* <ClickCounter /> */}
+      {/* Q=> 74 */}
+      {/* Q=> 75 */}
     </div>
   )
 };
