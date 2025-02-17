@@ -5,7 +5,6 @@ const IntractiveShapes = () => {
   const queue = useRef([]);
   const timerId = useRef([]);
   const [isQueueFull, setIsQueueFull] = useState(false);
-  console.log(queue);
 
   const handleOnClick = (rowIdx, colIdx, flag) => {
     if (timerId.current.length > 0 && flag) return;
@@ -46,18 +45,20 @@ const IntractiveShapes = () => {
     <div className='w-full h-screen p-4 md:p-8 bg-gray-800 flex justify-center items-center flex-col gap-4'>
       <h1 className='text-2xl text-white font-semibold'>Interactive Shapes</h1>
       <div className="max-w-[400px] mx-auto grid gap-3 grid-cols-3">
-        {grid.map((row, rowIdx) => {
-          return row.map((cell, colIdx) => {
-            return (
-              <div
-                className={`border border-gray-200 w-20 h-20 md:w-28 md:h-28 
+        {
+          grid.map((row, rowIdx) => {
+            return row.map((cell, colIdx) => {
+              return (
+                <div
+                  className={`border border-gray-200 w-20 h-20 md:w-28 md:h-28 
                   ${cell ? "bg-blue-600" : ""}`}
-                key={`${rowIdx}-${colIdx}`}
-                onClick={() => handleOnClick(rowIdx, colIdx, true)}
-              ></div>
-            );
-          });
-        })}
+                  key={`${rowIdx}-${colIdx}`}
+                  onClick={() => handleOnClick(rowIdx, colIdx, true)}
+                ></div>
+              );
+            });
+          })
+        }
       </div>
     </div>
   )

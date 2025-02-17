@@ -5,11 +5,11 @@ const DebouncedSearch = () => {
   const [debouncedQuery, setDebouncedQuery] = useState(""); // State for debounced value
 
   useEffect(() => {
-    let interval = setTimeout(() => {
+    let timeOut = setTimeout(() => {
       setDebouncedQuery(query);
     }, 2000);
 
-    return () => clearTimeout(interval)
+    return () => clearTimeout(timeOut)
   }, [query]);
 
   return (

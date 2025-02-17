@@ -74,6 +74,35 @@ import IntractiveShapes from './components/IntractiveShapes';
 import MemoryGame from './components/MemoryGame';
 import Otp from './components/Otp';
 import ClickCounter from './components/ClickCounter';
+import BlogExcerpt from './components/BlogExcerpt';
+import SelectibleGrid from './components/SelectibleGrid';
+import TransferList from './components/TransferList';
+import UndoRedo from './components/UndoRedo';
+import DataSorting from './components/DataSorting';
+import JobBoard from './components/JobBoard';
+import QuizApp from './components/QuizApp';
+import DebounceApiCall from './components/DebounceApiCall';
+import Toast from './components/Toast';
+import DragAndDrop from './components/DragAndDrop';
+import CustomProgressBar from './components/CustomProgressBar';
+import MusicPlayer from './components/MusicPlayer';
+import TipCalculator from './components/TipCalculator';
+import FilterProducts from './components/FilterProducts';
+import CurrencyConvertor from './components/CurrencyConvertor';
+import SimpleFormHandle from './components/SimpleFormHandle';
+import StepProgressBar from './components/StepProgressBar';
+import TicTocToe from './components/TicTocToe';
+import SearchAutoCom from './components/SearchAutoCom';
+import PasswordGenrator from './components/PasswordGenrator';
+import Pagination from './components/Pagination';
+import TreeLikeStr from './components/TreeLikeStr';
+import ModalPopup from './components/ModalPopup';
+import Todo from './components/Todo';
+import FoodRecipe from './components/FoodRecipe';
+import NotesApp from './components/NotesApp';
+import ExpenseTraker from './components/ExpenseTraket';
+import MealsApp from './components/MealsApp';
+import MealApp from './components/MealsApp';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 // TechdevGuru
@@ -107,8 +136,7 @@ const App = () => {
       {/* <ShowHideData /> */}
       {/* Q=> 12 */}
       {/* <RadioButtons /> */}
-      {/* Q=> 13 */}
-      {/* Q=> 53 Render Props ek pattern hai jo components ke beech logic share karne ke liye use hota hai */}
+      {/* Q=> 13 Render Props ek pattern hai jo components ke beech logic share karne ke liye use hota hai */}
       {/* <MouseTracker
         render={(pos) => (
           <h1>
@@ -238,7 +266,63 @@ const App = () => {
       {/* Q=> 73 */}
       {/* <ClickCounter /> */}
       {/* Q=> 74 */}
+      {/* <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <BlogExcerpt />
+      </div> */}
       {/* Q=> 75 */}
+      {/* <SelectibleGrid /> */}
+      {/* Q=> 76 */}
+      {/* <TransferList /> */}
+      {/* Q=> 77 */}
+      {/* <UndoRedo /> */}
+      {/* Q=> 78 */}
+      {/* <DataSorting /> */}
+      {/* Q=> 79 */}
+      {/* <JobBoard /> */}
+      {/* Q=> 80 */}
+      {/* <QuizApp /> */}
+      {/* Q=> 81 */}
+      {/* <DebounceApiCall /> */}
+      {/* Q=> 82 */}
+      {/* <Toast /> */}
+      {/* Q=> 83 */}
+      {/* <DragAndDrop /> */}
+      {/* Q=> 84 */}
+      {/* <CustomProgressBar /> */}
+      {/* Q=> 85 */}
+      {/* <MusicPlayer /> */}
+      {/* Q=> 86 */}
+      {/* <TipCalculator /> */}
+      {/* Q=> 87 */}
+      {/* <FilterProducts /> */}
+      {/* Q=> 88 */}
+      {/* <CurrencyConvertor /> */}
+      {/* Q=> 89 */}
+      {/* <SimpleFormHandle /> */}
+      {/* Q=> 90 */}
+      {/* <StepProgressBar /> */}
+      {/* Q=> 91 */}
+      {/* <TicTocToe /> */}
+      {/* Q=> 92 */}
+      {/* <SearchAutoCom /> */}
+      {/* Q=> 93 */}
+      {/* <PasswordGenrator /> */}
+      {/* Q=> 94 */}
+      {/* <Pagination /> */}
+      {/* Q=> 95 */}
+      {/* <TreeLikeStr /> */}
+      {/* Q=> 96 */}
+      {/* <ModalPopup /> */}
+      {/* Q=> 97 */}
+      {/* <Todo /> */}
+      {/* Q=> 98 */}
+      {/* <NotesApp /> */}
+      {/* Q=> 99 */}
+      {/* <FoodRecipe /> */}
+      {/* Q=> 100 */}
+      {/* <ExpenseTraker /> */}
+      {/* Q=> 101 */}
+      {/* <MealApp /> */}
     </div>
   )
 };

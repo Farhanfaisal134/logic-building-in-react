@@ -8,7 +8,7 @@ const TraficLights = () => {
       setActiveLight((prevLight) =>
         prevLight === "red" ? "yellow" : prevLight === "yellow" ? "green" : "red"
       );
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);

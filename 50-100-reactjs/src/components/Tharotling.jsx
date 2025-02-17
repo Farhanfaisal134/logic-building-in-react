@@ -15,7 +15,7 @@ const Throttling = () => {
 
         setTimeout(() => {
           flagRef.current = true;
-        }, 300);
+        }, 1000);
       }
     };
 

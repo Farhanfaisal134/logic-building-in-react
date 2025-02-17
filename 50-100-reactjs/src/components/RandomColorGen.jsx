@@ -46,7 +46,12 @@ const RandomColorGen = () => {
   return (
     <div className='h-screen w-full p-8 lg:p-20' style={{ backgroundColor: `${color}` }}>
       {
-        copyMessage && <p className='absolute right-5 top-0 md:text-xl text-white px-2 py-1 rounded-md bg-blue-600'>{copyMessage}</p>
+        copyMessage && (
+          <p className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 md:text-xl text-white 
+          px-2 py-1 rounded-md bg-blue-600">
+            {copyMessage}
+          </p>
+        )
       }
 
       <div className='flex lg:flex-row flex-col justify-center gap-4 '>
