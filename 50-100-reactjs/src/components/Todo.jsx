@@ -4,9 +4,7 @@ import { CiEdit } from "react-icons/ci";
 
 const Todo = () => {
   const [task, setTask] = useState("");
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("todos")) || []
-  );
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
 
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -123,12 +121,7 @@ const Todo = () => {
   );
 };
 
-const ListItem = ({
-  todo,
-  handleComplete,
-  handleDelete,
-  handleUpdate,
-}) => {
+const ListItem = ({ todo, handleComplete, handleDelete, handleUpdate, }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [udpatedValue, setUpdatedValue] = useState(todo.value)
 

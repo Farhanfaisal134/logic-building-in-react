@@ -1,7 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const CustomProgressBar = () => {
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(0);
+
+  // Infinite Time
+  // const intervalRef = useRef(null);
+
+  // useEffect(() => {
+  //   if (progress < 100) {
+  //     intervalRef.current = setInterval(() => {
+  //       setProgress((prev) => prev + 1);
+  //     }, 100);
+  //   } else {
+  //     clearInterval(intervalRef.current);
+  //     const timeout = setTimeout(() => {
+  //       setProgress(0);
+  //     }, 1000);
+  //     return () => clearTimeout(timeout);
+  //   };
+
+  //   return () => clearInterval(intervalRef.current);
+  // }, [progress]);
 
   useEffect(() => {
     if (progress < 100) {

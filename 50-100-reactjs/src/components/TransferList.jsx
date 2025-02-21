@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const data = [
+const data = [
   { title: 'First', id: 0, checked: false },
   { title: 'Second', id: 1, checked: false },
   { title: 'Third', id: 2, checked: false },
@@ -14,13 +14,10 @@ const TransferList = () => {
   const checkedList = (list, id, checked) => {
     return list.map((item) => {
       if (id === item.id) {
-        return {
-          ...item,
-          checked: !checked,
-        };
+        item.checked = !checked
       }
-      return item;
-    });
+      return item
+    })
   };
 
   const handleClick = (id, checked, direction) => {
@@ -62,7 +59,7 @@ const TransferList = () => {
           {leftItems.map(({ title, id, checked }) => (
             <div
               onClick={() => handleClick(id, checked, 'LEFT')}
-              className={`w-full p-2 text-center rounded-md text-white ${checked ? 'bg-blue-600' : "bg-gray-900"
+              className={`w-full p-2 text-center rounded-md cursor-pointer text-white ${checked ? 'bg-blue-600' : "bg-gray-900"
                 }`}
               id={id}
               key={id}
@@ -89,7 +86,7 @@ const TransferList = () => {
           {rightItems.map(({ title, id, checked }) => (
             <div
               onClick={() => handleClick(id, checked, 'RIGHT')}
-              className={`w-full text-center p-2 rounded-md text-white ${checked ? 'bg-blue-600' : "bg-gray-900"
+              className={`w-full text-center p-2 rounded-md text-white cursor-pointer ${checked ? 'bg-blue-600' : "bg-gray-900"
                 }`}
               id={id}
               key={id}

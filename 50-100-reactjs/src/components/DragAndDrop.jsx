@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const DragAndDrop = () => {
-  const [loading, setLoading] = useState(false);
   const [todos, setTodos] = useState([
     { id: 1, todo: "Complete React project", status: "wip" },
     { id: 2, todo: "Read JavaScript documentation", status: "wip" },

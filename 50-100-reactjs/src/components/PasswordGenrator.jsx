@@ -92,17 +92,19 @@ const PasswordGenrator = () => {
           Generate Password
         </button>
 
-        {generatedPassword && (
-          <div className="mt-4 flex items-center justify-between bg-gray-100 p-3 rounded-lg">
-            <span className="text-gray-800 break-all">{generatedPassword}</span>
-            <button
-              onClick={handleCopy}
-              className="text-indigo-600 font-semibold hover:text-indigo-800"
-            >
-              {copied ? "Copied!" : "Copy"}
-            </button>
-          </div>
-        )}
+        {
+          generatedPassword && (
+            <div className="mt-4 flex items-center justify-between bg-gray-100 p-3 rounded-lg">
+              <span className="text-gray-800 break-all">{generatedPassword}</span>
+              <button
+                onClick={handleCopy}
+                className="text-indigo-600 font-semibold hover:text-indigo-800"
+              >
+                {copied ? "Copied!" : "Copy"}
+              </button>
+            </div>
+          )
+        }
       </div>
     </div>
   );

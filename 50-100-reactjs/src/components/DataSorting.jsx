@@ -72,15 +72,17 @@ const DataSorting = () => {
             </select>
           </div>
           <div className='max-w-6xl mx-auto flex flex-wrap gap-4 text-slate-300 justify-center'>
-            {users && users.length > 0 ? (
-              users.map((userItem) => (
-                <p key={userItem.id} className='px-3 py-2 bg-gray-700 text-xl font-bold'>
-                  {userItem.firstName}
-                </p>
-              ))
-            ) : (
-              <p className='text-white text-xl'>No users found</p>
-            )}
+            {
+              users && users.length > 0 ? (
+                users.map((userItem) => (
+                  <p key={userItem.id} className='px-3 py-2 bg-gray-700 text-xl font-bold'>
+                    {userItem.firstName}
+                  </p>
+                ))
+              ) : (
+                <p className='text-white text-xl'>No users found</p>
+              )
+            }
           </div>
         </>
       )}

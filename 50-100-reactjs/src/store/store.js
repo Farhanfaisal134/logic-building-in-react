@@ -85,9 +85,25 @@ export const useExpenseStore = create((set) => ({
     })),
 }));
 
+// export const useMealsStore = create((set) => ({
+//   meals: [],
+//   searchQuery: "",
+//   setMeals: (meals) => set({ meals }),
+//   setSearchQuery: (query) => set({ searchQuery: query }),
+// }));
+
 export const useMealsStore = create((set) => ({
   meals: [],
   searchQuery: "",
-  setMeals: (meals) => set({ meals }),
+  fetchMeals: async () => {
+    try {
+      const response = await fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood");
+      const data = await response.json();
+      set({ meals: data.meals })
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  },
   setSearchQuery: (query) => set({ searchQuery: query }),
 }));
+

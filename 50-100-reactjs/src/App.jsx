@@ -103,6 +103,7 @@ import NotesApp from './components/NotesApp';
 import ExpenseTraker from './components/ExpenseTraket';
 import MealsApp from './components/MealsApp';
 import MealApp from './components/MealsApp';
+import InfiniteCounterApp from './components/InfiniteCounterApp';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 // TechdevGuru
@@ -258,7 +259,7 @@ const App = () => {
       {/* Q=> 69 */}
       {/* <DragBox /> */}
       {/* Q=> 70 */}
-      {/* <IntractiveShapes /> */}
+      <IntractiveShapes />
       {/* Q=> 71 */}
       {/* <MemoryGame /> */}
       {/* Q=> 72 */}
@@ -323,6 +324,8 @@ const App = () => {
       {/* <ExpenseTraker /> */}
       {/* Q=> 101 */}
       {/* <MealApp /> */}
+      {/* Q=> 102 */}
+      {/* <InfiniteCounterApp /> */}
     </div>
   )
 };
