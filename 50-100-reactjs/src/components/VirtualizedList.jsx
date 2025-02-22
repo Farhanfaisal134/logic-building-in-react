@@ -25,8 +25,8 @@ const VirtualizedList = ({ height = 400, width = 300, itemHeight = 36 }) => {
         style={{ height, width }}>
         <div style={{ height: list.length * itemHeight, position: "relative" }}>
           {
-            visibleItems.map((item, index) => (
-              <div
+            visibleItems.map((item, index) => {
+              return <div
                 key={visibleRange.startIndex + index}
                 className="absolute top-0 left-0 w-full text-center text-white bg-blue-500 border-b-2 border-gray-800  
                 flex items-center justify-center"
@@ -36,7 +36,7 @@ const VirtualizedList = ({ height = 400, width = 300, itemHeight = 36 }) => {
                 }}>
                 {item}
               </div>
-            ))
+            })
           }
         </div>
       </div>

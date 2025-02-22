@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const IntractiveShapes = () => {
-  const [grid, setGrid] = useState(Array.from({ length: 3 }, () => new Array(3).fill(false)));
+  const [grid, setGrid] = useState(Array.from({ length: 3 }, () => Array(3).fill(false)));
   const queue = useRef([]);
   const timerId = useRef([]);
   const [isQueueFull, setIsQueueFull] = useState(false);
@@ -27,8 +27,8 @@ const IntractiveShapes = () => {
           handleOnClick(rowIdx, colIdx, false);
           if (idx === timerId.current.length - 1) {
             timerId.current = [];
-            setIsQueueFull(false); // Reset queue status after clearing
-          }
+            setIsQueueFull(false);
+          };
         }, 1000 * (idx + 1));
       });
       queue.current = [];
@@ -40,6 +40,12 @@ const IntractiveShapes = () => {
       timerId.current.forEach((id) => clearTimeout(id));
     };
   }, []);
+
+  //Important Note 
+  //For Loop Completion:
+  //Tumhara loop (ya forEach) bohot jaldi chal jata hai aur teen timeouts schedule ho jate hain.
+  //Isliye, jab first timeout callback execute hota hai (after 1 second),
+  //timers array already 3 elements (TimeoutID1, TimeoutID2, TimeoutID3) se bhar chuka hota hai.
 
   return (
     <div className='w-full h-screen p-4 md:p-8 bg-gray-800 flex justify-center items-center flex-col gap-4'>

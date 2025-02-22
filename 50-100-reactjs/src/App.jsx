@@ -104,6 +104,7 @@ import ExpenseTraker from './components/ExpenseTraket';
 import MealsApp from './components/MealsApp';
 import MealApp from './components/MealsApp';
 import InfiniteCounterApp from './components/InfiniteCounterApp';
+import MultiPrograssBar from './components/MultiPrograssBar';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 // TechdevGuru
@@ -235,7 +236,7 @@ const App = () => {
       {/* Q=> 57 */}
       {/* <Accordian /> */}
       {/* Q=> 58 */}
-      {/* <ImageCarousel /> */}
+      <ImageCarousel />
       {/* Q=> 59 */}
       {/* <InfiniteScroll /> */}
       {/* Q=> 60 */}
@@ -259,7 +260,7 @@ const App = () => {
       {/* Q=> 69 */}
       {/* <DragBox /> */}
       {/* Q=> 70 */}
-      <IntractiveShapes />
+      {/* <IntractiveShapes /> */}
       {/* Q=> 71 */}
       {/* <MemoryGame /> */}
       {/* Q=> 72 */}
@@ -290,6 +291,7 @@ const App = () => {
       {/* <DragAndDrop /> */}
       {/* Q=> 84 */}
       {/* <CustomProgressBar /> */}
+      {/* <MultiPrograssBar /> */}
       {/* Q=> 85 */}
       {/* <MusicPlayer /> */}
       {/* Q=> 86 */}
@@ -326,6 +328,7 @@ const App = () => {
       {/* <MealApp /> */}
       {/* Q=> 102 */}
       {/* <InfiniteCounterApp /> */}
+
     </div>
   )
 };
