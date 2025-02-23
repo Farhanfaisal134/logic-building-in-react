@@ -6,31 +6,23 @@ const StartRating = () => {
   const [hover, setHover] = useState(null);
 
   return (
-    <div className="w-full h-screen bg-gray-800">
-      <div className="flex justify-center items-center gap-2 pt-10 flex-col">
-        <div className="flex gap-3">
-          {[...Array(10)].map((_, index) => {
+    <div className="flex justify-center items-center flex-col gap-4 bg-gray-900 text-white h-screen">
+      <div className="flex justify-center items-center gap-2">
+        {
+          [...Array(10)].map((_, index) => {
             index += 1;
             return (
-              <FaStar
-                key={index}
-                size={40}
+              <FaStar className={`w-20 h-20 cursor-pointer ${index <= (hover || rating) ? "text-yellow-500" : "text-gray-300"}`}
                 onClick={() => setRating(index)}
                 onMouseEnter={() => setHover(index)}
-                onMouseLeave={() => setHover(null)}
-                className={`cursor-pointer transition-all duration-300 ${index <= (hover || rating) ? "text-yellow-500" : "text-gray-300"
-                  }`}
-              />
-            );
-          })}
-        </div>
-
-        <span className={`ml-4 text-2xl font-semibold ${rating ? "text-yellow-500" : "text-gray-300"}`}>
-          {rating} / 10
-        </span>
+                onMouseLeave={() => setHover(null)} />
+            )
+          })
+        }
       </div>
+      <div className="text-2xl font-bold">{rating} / 10</div>
     </div>
-  );
+  )
 };
 
 export default StartRating;

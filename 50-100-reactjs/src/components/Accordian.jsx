@@ -59,7 +59,8 @@ const Accordian = () => {
           : "Enable Multi Selection Off"}
       </h1>
       <div className="flex flex-col gap-5 w-2/3">
-        {data &&
+        {
+        data &&
           data.map((item, idx) => {
             return (
               <div
@@ -69,20 +70,21 @@ const Accordian = () => {
                   enableMultiSelection
                     ? () => handleMultiSelection(item.id)
                     : () => handleSingleSelection(item.id)
-                }
-              >
+                }>
                 <div className="flex justify-between text-2xl">
                   <h1>{item.question}</h1>
                   <span className="text-3xl">+</span>
                 </div>
                 <div>
-                  {enableMultiSelection ? multiple.indexOf(item.id) !== -1 && (
-                    <div className="font-bold text-gray-400">{item.answer}</div>
-                  ) : (
-                    selected === item.id && (
+                  {
+                    enableMultiSelection ? multiple.indexOf(item.id) !== -1 && (
                       <div className="font-bold text-gray-400">{item.answer}</div>
+                    ) : (
+                      selected === item.id && (
+                        <div className="font-bold text-gray-400">{item.answer}</div>
+                      )
                     )
-                  )}
+                  }
                 </div>
               </div>
             );

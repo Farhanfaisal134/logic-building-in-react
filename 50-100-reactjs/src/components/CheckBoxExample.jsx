@@ -7,10 +7,10 @@ const CheckBoxExample = () => {
     const { value, checked } = event.target;
 
     if (checked) {
-      setSelectedOptions([...selectedOptions, value]);  // Add selected option
+      setSelectedOptions([...selectedOptions, value]);
     } else {
-      setSelectedOptions(selectedOptions.filter((item) => item !== value)); // Remove unselected option
-    }
+      setSelectedOptions(selectedOptions.filter((item) => item !== value));
+    };
   };
 
   return (

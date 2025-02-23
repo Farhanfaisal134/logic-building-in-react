@@ -10,15 +10,10 @@ const LoadMoreData = () => {
   async function fetchProducts() {
     try {
       setLoading(true);
-
-      const response = await fetch(
-        `https://dummyjson.com/products?limit=10&skip=${count === 0 ? 0 : count * 10
-        }`
-      );
+      const response = await fetch(`https://dummyjson.com/products?limit=4&skip=${count === 0 ? 0 : count * 4}`);
       const result = await response.json();
       if (result && result.products && result.products.length) {
-        const uniqueProducts = result.products.filter((newProduct) =>
-          !products.some((existingProduct) => newProduct.id === existingProduct.id));
+        const uniqueProducts = result.products.filter((newProduct) => !products.some((existingProduct) => newProduct.id === existingProduct.id));
         setProducts((prevData) => [...prevData, ...uniqueProducts]);
       };
       setLoading(false);
@@ -48,20 +43,20 @@ const LoadMoreData = () => {
     <div className="p-6">
       <h1 className="text-3xl font-bold text-center mb-8">Product List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="border border-gray-300 rounded-lg p-4 shadow hover:shadow-lg transition"
-          >
-            <img
-              src={product.thumbnail}
-              alt={product.title}
-              className="w-full h-48 object-cover mb-4 rounded"
-            />
-            <h2 className="text-lg font-semibold">{product.title}</h2>
-            <p className="text-gray-600">${product.price}</p>
-          </div>
-        ))}
+        {
+          products.map((product) => (
+            <div
+              key={product.id}
+              className="border border-gray-300 rounded-lg p-4 shadow hover:shadow-lg transition">
+              <img
+                src={product.thumbnail}
+                alt={product.title}
+                className="w-full h-48 object-cover mb-4 rounded" />
+              <h2 className="text-lg font-semibold">{product.title}</h2>
+              <p className="text-gray-600">${product.price}</p>
+            </div>
+          ))
+        }
       </div>
 
       <div className="text-center mt-8">
