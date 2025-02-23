@@ -8,9 +8,22 @@ const SimpleFormHandle = () => {
     password: '',
     confirmPassword: '',
     email: '',
+    gender: '',
+    interests: []
   });
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    setFormData((prevData) => {
+      if (checked) {
+        return { ...prevData, interests: [...prevData.interests, value] };
+      } else {
+        return { ...prevData, interests: prevData.interests.filter(item => item !== value) };
+      }
+    });
+  };
 
   const handleChanges = (e) => {
     const { name, value } = e.target;
@@ -33,16 +46,6 @@ const SimpleFormHandle = () => {
       return;
     }
 
-    // if (!/[!@#$%^&*()<>,."]/.test(formData.password)) {
-    //   setError('Password must contain a special character');
-    //   return;
-    // }
-
-    // if (!/[A-Z]/.test(formData.password)) {
-    //   setError('Password must contain a capital letter');
-    //   return;
-    // }
-
     setError('');
     toast.success("Account created successfully!");
     setIsModalOpen(true);
@@ -55,6 +58,8 @@ const SimpleFormHandle = () => {
       email: '',
       password: '',
       confirmPassword: '',
+      gender: '',
+      interests: []
     });
   };
 
@@ -108,11 +113,85 @@ const SimpleFormHandle = () => {
                 onChange={handleChanges}
               />
 
-              {error && (
-                <p className='text-red-500 font-medium text-sm text-center'>{error}</p>
-              )}
+              <div className="flex items-center gap-4">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="Male"
+                    checked={formData.gender === "Male"}
+                    onChange={handleChanges}
+                    className="mr-2"
+                  />
+                  Male
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="Female"
+                    checked={formData.gender === "Female"}
+                    onChange={handleChanges}
+                    className="mr-2"
+                  />
+                  Female
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="Other"
+                    checked={formData.gender === "Other"}
+                    onChange={handleChanges}
+                    className="mr-2"
+                  />
+                  Other
+                </label>
+              </div>
 
-              <button className='text-sm px-4 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mt-3'>
+              <div className="flex items-center gap-4">
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="interests"
+                    value="Sports"
+                    checked={formData.interests.includes("Sports")}
+                    onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  Sports
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="interests"
+                    value="Music"
+                    checked={formData.interests.includes("Music")}
+                    onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  Music
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="interests"
+                    value="Travel"
+                    checked={formData.interests.includes("Travel")}
+                    onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  Travel
+                </label>
+              </div>
+
+              {
+                error && (
+                  <p className='text-red-500 font-medium text-sm text-center'>{error}</p>
+                )
+              }
+              <button className='text-sm px-4 py-2 bg-indigo-600 text-white font-medium rounded-md
+               focus:outline-none hover:bg-indigo-700  focus:ring-2 focus:ring-indigo-500 w-full mt-3'>
                 Submit
               </button>
             </form>
@@ -127,6 +206,7 @@ const SimpleFormHandle = () => {
       </div>
 
       <ToastContainer />
+
       {
         isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -139,6 +219,10 @@ const SimpleFormHandle = () => {
                 <p className="text-gray-700">
                   <strong>Email:</strong> {formData.email}
                 </p>
+                <p className="text-gray-700">
+                  <strong>Gender:</strong> {formData.gender}
+                </p>
+                <p className="text-gray-700"><strong>interests:</strong> {formData.interests.join(",")}</p>
               </div>
               <button
                 onClick={closeModal}
