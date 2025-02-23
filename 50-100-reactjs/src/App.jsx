@@ -236,7 +236,7 @@ const App = () => {
       {/* Q=> 57 */}
       {/* <Accordian /> */}
       {/* Q=> 58 */}
-      <ImageCarousel />
+      {/* <ImageCarousel /> */}
       {/* Q=> 59 */}
       {/* <InfiniteScroll /> */}
       {/* Q=> 60 */}
@@ -301,7 +301,7 @@ const App = () => {
       {/* Q=> 88 */}
       {/* <CurrencyConvertor /> */}
       {/* Q=> 89 */}
-      {/* <SimpleFormHandle /> */}
+      <SimpleFormHandle />
       {/* Q=> 90 */}
       {/* <StepProgressBar /> */}
       {/* Q=> 91 */}
