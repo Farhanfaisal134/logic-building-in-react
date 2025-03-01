@@ -5,7 +5,6 @@ const Calculator = () => {
     let storedTheme = localStorage.getItem("theme");
     return storedTheme ? storedTheme : "light";
   });
-
   const [input, setInput] = useState("");
 
   const buttons = [

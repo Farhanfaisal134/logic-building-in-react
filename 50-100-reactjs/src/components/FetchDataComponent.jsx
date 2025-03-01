@@ -15,17 +15,21 @@ const FetchDataComponent = () => {
 
   return (
     <div className="p-4">
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {data.slice(0, 10).map((item) => (
-            <li key={item.id} className="text-lg">
-              {item.title}
-            </li>
-          ))}
-        </ul>
-      )}
+      {
+        loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul>
+            {
+              data.slice(0, 10).map((item) => (
+                <li key={item.id} className="text-lg">
+                  {item.title}
+                </li>
+              ))
+            }
+          </ul>
+        )
+      }
     </div>
   );
 };

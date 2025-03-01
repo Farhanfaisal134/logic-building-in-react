@@ -95,15 +95,16 @@ export const useExpenseStore = create((set) => ({
 export const useMealsStore = create((set) => ({
   meals: [],
   searchQuery: "",
+  isLoading: false,
   fetchMeals: async () => {
     try {
+      set({ isLoading: true })
       const response = await fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood");
       const data = await response.json();
-      set({ meals: data.meals })
+      set({ meals: data.meals, isLoading: false })
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   },
   setSearchQuery: (query) => set({ searchQuery: query }),
 }));
-

@@ -20,7 +20,7 @@ const VirtualizedList = ({ height = 400, width = 300, itemHeight = 36 }) => {
   return (
     <div className="w-full h-screen bg-gray-800 flex justify-center items-center">
       <div
-        className="overflow-auto bg-gray-600 rounded shadow-lg"
+        className="overflow-auto bg-gray-600 rounded shadow-lg scrollbar-hide"
         onScroll={handleScroll}
         style={{ height, width }}>
         <div style={{ height: list.length * itemHeight, position: "relative" }}>
@@ -28,7 +28,7 @@ const VirtualizedList = ({ height = 400, width = 300, itemHeight = 36 }) => {
             visibleItems.map((item, index) => {
               return <div
                 key={visibleRange.startIndex + index}
-                className="absolute top-0 left-0 w-full text-center text-white bg-blue-500 border-b-2 border-gray-800  
+                className="absolute w-full text-center text-white bg-blue-500 border-b-2 border-gray-800  
                 flex items-center justify-center"
                 style={{
                   height: itemHeight,

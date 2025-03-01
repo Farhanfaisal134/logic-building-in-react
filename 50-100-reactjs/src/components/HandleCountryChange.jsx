@@ -21,8 +21,7 @@ const Dropdowns = () => {
       <select
         onChange={handleCountryChange}
         className="border p-2 mb-4 block"
-        defaultValue=""
-      >
+        defaultValue="">
         <option value="" disabled>
           Select Country
         </option>

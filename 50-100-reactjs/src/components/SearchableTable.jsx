@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 const SearchableTable = () => {
   const [data, setData] = useState([]); // Stores fetched data
   const [searchTerm, setSearchTerm] = useState(""); // Search term
-  const [sortOrder, setSortOrder] = useState("asc"); // Sorting order
+  const [sortOrder, setSortOrder] = useState(""); // Sorting order
   const [sortKey, setSortKey] = useState(""); // Column to sort by
 
   useEffect(() => {

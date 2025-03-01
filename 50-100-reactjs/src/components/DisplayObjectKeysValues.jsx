@@ -8,11 +8,13 @@ const DisplayObjectKeysValues = () => {
   return (
     <div className="p-4">
       <ul>
-        {Object.entries(data).map(([key, value], index) => (
-          <li key={index} className="mb-2 text-lg">
-            <strong>{key}:</strong> {value}
-          </li>
-        ))}
+        {
+          Object.entries(data).map(([key, value], index) => (
+            <li key={index} className="mb-2 text-lg">
+              <strong>{key}:</strong> {value}
+            </li>
+          ))
+        }
       </ul>
     </div>
   );

@@ -11,8 +11,7 @@ const NesteadCircles = () => {
         style={{
           width: `${n * 50}px`,
           height: `${n * 50}px`,
-        }}
-      >
+        }}>
         {renderCircles(n - 1)}
       </div>
     );

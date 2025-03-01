@@ -204,7 +204,7 @@ const App = () => {
       {/* Q=> 41 */}
       {/* <StopWatch /> */}
       {/* Q=> 42 */}
-      {/* <DynamicForm /> */}
+      {/* <InfiniteCounterApp /> */}
       {/* Q=> 43 */}
       {/* <SearchableTable /> */}
       {/* Q=> 44 */}
@@ -301,7 +301,7 @@ const App = () => {
       {/* Q=> 88 */}
       {/* <CurrencyConvertor /> */}
       {/* Q=> 89 */}
-      <SimpleFormHandle />
+      {/* <SimpleFormHandle /> */}
       {/* Q=> 90 */}
       {/* <StepProgressBar /> */}
       {/* Q=> 91 */}
@@ -325,10 +325,9 @@ const App = () => {
       {/* Q=> 100 */}
       {/* <ExpenseTraker /> */}
       {/* Q=> 101 */}
-      {/* <MealApp /> */}
+      <MealApp />
       {/* Q=> 102 */}
-      {/* <InfiniteCounterApp /> */}
-
+      {/* <DynamicForm /> */}
     </div>
   )
 };

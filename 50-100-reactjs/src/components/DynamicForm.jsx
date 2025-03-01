@@ -60,23 +60,25 @@ function DynamicForm() {
             return (
               <div key={field.id} className="flex flex-col gap-2">
                 <label className="font-semibold">{field.label}</label>
-                {field.type === "checkbox" ? (
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    checked={formData[field.name] || false}
-                    onChange={handleChange}
-                    className="w-5 h-5"
-                  />
-                ) : (
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    value={formData[field.name] || ""}
-                    onChange={handleChange}
-                    className="border p-2 rounded-md"
-                  />
-                )}
+                {
+                  field.type === "checkbox" ? (
+                    <input
+                      type={field.type}
+                      name={field.name}
+                      checked={formData[field.name] || false}
+                      onChange={handleChange}
+                      className="w-5 h-5"
+                    />
+                  ) : (
+                    <input
+                      type={field.type}
+                      name={field.name}
+                      value={formData[field.name] || ""}
+                      onChange={handleChange}
+                      className="border p-2 rounded-md"
+                    />
+                  )
+                }
                 {errors[field.name] && (
                   <span className="text-red-500 text-sm">{errors[field.name]}</span>
                 )}

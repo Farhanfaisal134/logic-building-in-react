@@ -4,9 +4,7 @@ const SearchFilter = () => {
   const data = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
   const [searchTerm, setSearchTerm] = React.useState("");
 
-  const filteredData = data.filter((item) =>
-    item.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = data.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <div className="p-4">
@@ -18,11 +16,13 @@ const SearchFilter = () => {
         className="border p-2 mb-4"
       />
       <ul>
-        {filteredData.map((item, index) => (
-          <li key={index} className="text-lg">
-            {item}
-          </li>
-        ))}
+        {
+          filteredData.map((item, index) => (
+            <li key={index} className="text-lg">
+              {item}
+            </li>
+          ))
+        }
       </ul>
     </div>
   );
