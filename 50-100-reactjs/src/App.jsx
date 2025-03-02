@@ -105,6 +105,7 @@ import MealsApp from './components/MealsApp';
 import MealApp from './components/MealsApp';
 import InfiniteCounterApp from './components/InfiniteCounterApp';
 import MultiPrograssBar from './components/MultiPrograssBar';
+import InputPlaceholderAnimation from './components/InputPlaceholderAnimation';
 const LazyComponent = React.lazy(() => import("./components/MyComponent"))
 
 // TechdevGuru
@@ -309,15 +310,15 @@ const App = () => {
       {/* Q=> 92 */}
       {/* <SearchAutoCom /> */}
       {/* Q=> 93 */}
-      {/* <PasswordGenrator /> */}
+      {/* <ModalPopup /> */}
       {/* Q=> 94 */}
       {/* <Pagination /> */}
       {/* Q=> 95 */}
       {/* <TreeLikeStr /> */}
       {/* Q=> 96 */}
-      {/* <ModalPopup /> */}
+      <Todo />
       {/* Q=> 97 */}
-      {/* <Todo /> */}
+      {/* <PasswordGenrator /> */}
       {/* Q=> 98 */}
       {/* <NotesApp /> */}
       {/* Q=> 99 */}
@@ -325,9 +326,11 @@ const App = () => {
       {/* Q=> 100 */}
       {/* <ExpenseTraker /> */}
       {/* Q=> 101 */}
-      <MealApp />
+      {/* <MealApp /> */}
       {/* Q=> 102 */}
       {/* <DynamicForm /> */}
+      {/* Q=> 103 */}
+      {/* <InputPlaceholderAnimation /> */}
     </div>
   )
 };

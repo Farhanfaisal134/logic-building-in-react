@@ -85,13 +85,6 @@ export const useExpenseStore = create((set) => ({
     })),
 }));
 
-// export const useMealsStore = create((set) => ({
-//   meals: [],
-//   searchQuery: "",
-//   setMeals: (meals) => set({ meals }),
-//   setSearchQuery: (query) => set({ searchQuery: query }),
-// }));
-
 export const useMealsStore = create((set) => ({
   meals: [],
   searchQuery: "",

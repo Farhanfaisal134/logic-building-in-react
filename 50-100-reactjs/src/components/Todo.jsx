@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 
 const Todo = () => {
   const [task, setTask] = useState("");
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
-
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -52,7 +51,7 @@ const Todo = () => {
       setFilteredTodos(todos);
     } else if (filter === "completed") {
       setFilteredTodos(todos.filter((todo) => todo.isCompleted));
-    };
+    }
   };
 
   useEffect(() => {
@@ -65,7 +64,7 @@ const Todo = () => {
 
   return (
     <div className="flex justify-center w-full h-screen bg-slate-500 text-white pt-4">
-      <div className="w-[400px] lg:w-[600px] mx-auto">
+      <div className="max-w-3xl w-full mx-auto">
         <div className="flex w-full">
           <input
             type="text"
@@ -100,88 +99,85 @@ const Todo = () => {
               Completed
             </button>
           </div>
-          {
-            filteredTodos.length > 0 ? (
-              filteredTodos.map((todo) => (
-                <ListItem
-                  key={todo.id}
-                  todo={todo}
-                  handleComplete={handleComplete}
-                  handleDelete={handleDelete}
-                  handleUpdate={handleUpdate}
-                />
-              ))
-            ) : (
-              <div>No Todos Available</div>
-            )
-          }
+          {filteredTodos.length > 0 ? (
+            filteredTodos.map((todo) => (
+              <ListItem
+                key={todo.id}
+                todo={todo}
+                handleComplete={handleComplete}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+              />
+            ))
+          ) : (
+            <div>No Todos Available</div>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-const ListItem = ({ todo, handleComplete, handleDelete, handleUpdate, }) => {
+const ListItem = ({ todo, handleComplete, handleDelete, handleUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [udpatedValue, setUpdatedValue] = useState(todo.value)
+  const [updatedValue, setUpdatedValue] = useState(todo.value);
 
   function handleUpdateClick() {
-    if (udpatedValue.trim() !== "") {
-      handleUpdate(todo.id, udpatedValue)
-      setIsEditing(false)
+    if (updatedValue.trim() !== "") {
+      handleUpdate(todo.id, updatedValue);
+      setIsEditing(false);
     }
-  };
+  }
 
   return (
-    <div
-      className='bg-slate-700 px-2 py-2 flex justify-between items-center text-xl w-full rounded-md'>
+    <div className="bg-slate-700 px-2 py-2 flex justify-between items-center text-xl w-full rounded-md">
+      <input
+        type="checkbox"
+        checked={todo.isCompleted}
+        onChange={() => handleComplete(todo.id)}
+        className="w-6 h-6 mr-2 cursor-pointer"
+      />
       {
-        todo.isCompleted ?
-          (
-            <p className='w-full font-bold line-through text-slate-300'>{todo.value}</p>
-          ) : isEditing ? (
-            <input
-              value={udpatedValue}
-              type="text"
-              className='w-full p-2 outline-none text-black'
-              onChange={(e) => setUpdatedValue(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleUpdateClick()
-                  setIsEditing(false)
-                }
-              }}
-            />
-          ) : (
-            <p className='w-full font-bold'>{todo.value}</p>
-          )
+        isEditing ? (
+          <input
+            value={updatedValue}
+            type="text"
+            className="w-full p-2 outline-none text-black"
+            onChange={(e) => setUpdatedValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleUpdateClick();
+              }
+            }}
+          />
+        ) : (
+          <p className={`w-full font-bold ${todo.isCompleted ? "line-through text-slate-300" : ""}`}>
+            {todo.value}
+          </p>
+        )
       }
-      <div className='flex gap-1 items-center'>
+      <div className="flex gap-1 items-center">
         <button
           onClick={() => handleDelete(todo.id)}
-          className='w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center'>
+          className="w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center">
           <MdDeleteForever size={30} />
-        </button>
-        <button
-          onClick={() => handleComplete(todo.id)}
-          className='w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center'>
-          {todo.isCompleted ? "❌" : " ✅"}
         </button>
         <button
           onClick={() => {
             if (isEditing) {
-              handleUpdateClick()
+              handleUpdateClick();
             } else {
-              setIsEditing(true)
+              setIsEditing(true);
             }
           }}
-          disabled={udpatedValue.trim() === "" || todo.isCompleted === true}
-          className='w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center disabled:cursor-not-allowed disabled:bg-gray-300'>
+          disabled={updatedValue.trim() === "" || todo.isCompleted === true}
+          className="w-12 h-12 rounded-md p-1 bg-slate-900 flex justify-center items-center 
+          disabled:cursor-not-allowed disabled:bg-gray-300">
           {isEditing ? "Upd" : <CiEdit size={30} />}
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Todo;
