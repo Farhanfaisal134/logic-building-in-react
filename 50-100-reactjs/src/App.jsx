@@ -306,7 +306,7 @@ const App = () => {
       {/* Q=> 90 */}
       {/* <StepProgressBar /> */}
       {/* Q=> 91 */}
-      {/* <TicTocToe /> */}
+      <TicTocToe />
       {/* Q=> 92 */}
       {/* <SearchAutoCom /> */}
       {/* Q=> 93 */}
@@ -316,7 +316,7 @@ const App = () => {
       {/* Q=> 95 */}
       {/* <TreeLikeStr /> */}
       {/* Q=> 96 */}
-      <Todo />
+      {/* <Todo /> */}
       {/* Q=> 97 */}
       {/* <PasswordGenrator /> */}
       {/* Q=> 98 */}

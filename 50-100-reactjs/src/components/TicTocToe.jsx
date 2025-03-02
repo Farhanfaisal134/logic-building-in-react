@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Square({ value, onClick }) {
-  return (
-    <button className="w-[100px] h-[100px] text-3xl font-thin cursor-pointer bg-green-700 shadow-md rounded-md hover:bg-green-800 transition-all duration-300 text-white" onClick={onClick}>
-      {value}
-    </button>
-  );
-};
-
-const TicTocToe = () => {
+function TicTocToe() {
   const [squares, setSquares] = useState(Array(9).fill(""));
   const [isXTurn, setIsXTurn] = useState(true);
   const [status, setStatus] = useState("");
@@ -64,20 +56,15 @@ const TicTocToe = () => {
 
   return (
     <div className="w-full h-screen flex justify-center items-center flex-col">
-      <div className="flex">
-        <Square value={squares[0]} onClick={() => handleClick(0)} />
-        <Square value={squares[1]} onClick={() => handleClick(1)} />
-        <Square value={squares[2]} onClick={() => handleClick(2)} />
-      </div>
-      <div className="flex">
-        <Square value={squares[3]} onClick={() => handleClick(3)} />
-        <Square value={squares[4]} onClick={() => handleClick(4)} />
-        <Square value={squares[5]} onClick={() => handleClick(5)} />
-      </div>
-      <div className="flex">
-        <Square value={squares[6]} onClick={() => handleClick(6)} />
-        <Square value={squares[7]} onClick={() => handleClick(7)} />
-        <Square value={squares[8]} onClick={() => handleClick(8)} />
+      <div className="grid grid-cols-3">
+        {
+          squares.map((item, index) => (
+            <button key={index} className="w-[100px] h-[100px] text-3xl font-thin cursor-pointer bg-green-700 
+            shadow-md rounded-md hover:bg-green-800 transition-all duration-300 text-white" onClick={() => handleClick(index)}>
+              {item}
+            </button>
+          ))
+        }
       </div>
       <h1 className="my-3">{status}</h1>
       <button onClick={handleReStart} className={`px-4 py-2 bg-blue-700 hover:bg-blue-800 
