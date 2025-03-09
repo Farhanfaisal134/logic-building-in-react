@@ -5,7 +5,6 @@ const UndoRedo = () => {
   const [value, setValue] = useState(0);
   const [redoList, setRedoList] = useState([]);
   const [history, setHistory] = useState([]);
-  const [undoCount, setUndoCount] = useState(0);
 
   const maintainHistory = (key, prev, curr) => {
     const obj = {
@@ -27,18 +26,14 @@ const UndoRedo = () => {
 
   const handleUndo = () => {
     if (history.length) {
-      if (undoCount + 1 > 5) {
-        alert('You cant undo beyond limit=5');
-        return;
-      };
+      const copyHist = [...history];
+      const firstItem = copyHist.shift();
+      setHistory(copyHist);
+      setValue(firstItem.prev)
+      const copyRedoList = [...redoList];
+      copyRedoList.push(firstItem)
+      setRedoList(copyRedoList)
     };
-    const copyHist = [...history];
-    const firstItem = copyHist.shift();
-    setHistory(copyHist);
-    setValue(firstItem.prev)
-    const copyRedoList = [...redoList];
-    copyRedoList.push(firstItem)
-    setRedoList(copyRedoList)
   };
 
   const handleRedo = () => {

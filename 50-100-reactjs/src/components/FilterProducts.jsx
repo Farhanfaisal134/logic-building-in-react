@@ -62,8 +62,7 @@ const FilterProducts = () => {
           <button
             onClick={() =>
               setCurrentSelectedCategory(
-                currentSelectedCategory !== "" &&
-                  currentSelectedCategory === uniqueCategoryItem
+                currentSelectedCategory === uniqueCategoryItem
                   ? ""
                   : uniqueCategoryItem,
               )

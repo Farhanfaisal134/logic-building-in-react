@@ -4,7 +4,7 @@ const TipCalculator = () => {
   const [billAmount, setBillAmount] = useState('');
   const [tipPercentage, setTipPercentage] = useState(10);
   const [splitCount, setSplitCount] = useState(1);
-  const [tipAmount, setTipAmount] = useState('');
+  const [tipAmount, setTipAmount] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 
   function handleCalculteTip() {

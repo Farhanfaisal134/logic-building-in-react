@@ -10,16 +10,15 @@ const DataSorting = () => {
       setLoading(true);
       const apiResponse = await fetch(`https://dummyjson.com/users`);
       const result = await apiResponse.json();
-
-      if (result && result.users && result.users.length > 0) {
+      if (result) {
         sort !== "" ? handleSort(result.users) : setUsers(result.users);
-      }
+      };
 
       setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log(error);
-    }
+    };
   };
 
   useEffect(() => {

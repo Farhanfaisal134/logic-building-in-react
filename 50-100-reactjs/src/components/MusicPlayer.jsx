@@ -52,13 +52,12 @@ const MusicPlayer = () => {
     });
   };
 
-  function handleSkipTrack(getDirection) {  
+  function handleSkipTrack(getDirection) {
     if (getDirection === "forward") {
       SetCurrentMusicTrack((prevTrack) => prevTrack === tracks.length - 1 ? 0 : prevTrack + 1);
     } else if (getDirection === "backward") {
       SetCurrentMusicTrack((prevTrack) => prevTrack === 0 ? tracks.length - 1 : prevTrack - 1);
     };
-    // setTimeout(() => audioRef.current.play(), 100); // Auto-play new track
     setIsPlaying(true);
   };
 

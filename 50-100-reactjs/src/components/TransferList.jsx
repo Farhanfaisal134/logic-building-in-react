@@ -56,17 +56,19 @@ const TransferList = () => {
       <h1 className="text-center text-2xl font-bold py-4">Transfer List</h1>
       <div className="w-full max-w-2xl mx-auto flex gap-4">
         <div className="w-full flex flex-col gap-4 border-2 border-gray-800 h-60 p-4 overflow-y-auto">
-          {leftItems.map(({ title, id, checked }) => (
-            <div
-              onClick={() => handleClick(id, checked, 'LEFT')}
-              className={`w-full p-2 text-center rounded-md cursor-pointer text-white ${checked ? 'bg-blue-600' : "bg-gray-900"
-                }`}
-              id={id}
-              key={id}
-            >
-              {title}
-            </div>
-          ))}
+          {
+            leftItems.map(({ title, id, checked }) => (
+              <div
+                onClick={() => handleClick(id, checked, 'LEFT')}
+                className={`w-full p-2 text-center rounded-md cursor-pointer text-white ${checked ? 'bg-blue-600' : "bg-gray-900"
+                  }`}
+                id={id}
+                key={id}
+              >
+                {title}
+              </div>
+            ))
+          }
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">
           <button
@@ -83,17 +85,19 @@ const TransferList = () => {
           </button>
         </div>
         <div className="w-full flex flex-col gap-4 border-2 border-gray-800 h-60 p-4 overflow-y-auto">
-          {rightItems.map(({ title, id, checked }) => (
-            <div
-              onClick={() => handleClick(id, checked, 'RIGHT')}
-              className={`w-full text-center p-2 rounded-md text-white cursor-pointer ${checked ? 'bg-blue-600' : "bg-gray-900"
-                }`}
-              id={id}
-              key={id}
-            >
-              {title}
-            </div>
-          ))}
+          {
+            rightItems.map(({ title, id, checked }) => (
+              <div
+                onClick={() => handleClick(id, checked, 'RIGHT')}
+                className={`w-full text-center p-2 rounded-md text-white cursor-pointer ${checked ? 'bg-blue-600' : "bg-gray-900"
+                  }`}
+                id={id}
+                key={id}
+              >
+                {title}
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>

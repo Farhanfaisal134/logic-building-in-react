@@ -1,88 +1,87 @@
 import React, { useState, useEffect, useMemo } from "react";
 
 const SearchableTable = () => {
-  const [data, setData] = useState([]); // Stores fetched data
-  const [searchTerm, setSearchTerm] = useState(""); // Search term
-  const [sortOrder, setSortOrder] = useState(""); // Sorting order
-  const [sortKey, setSortKey] = useState(""); // Column to sort by
+  const [data, setData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortKey, setSortKey] = useState("");
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true)
       const response = await fetch("https://jsonplaceholder.typicode.com/posts");
       const result = await response.json();
+      setLoading(false)
       setData(result.slice(0, 10));
     };
-
     fetchData();
   }, []);
 
   const filteredData = useMemo(() => {
-    let filtered = data;
+    let filtered = [...data];
 
     if (searchTerm) {
       filtered = filtered.filter((item) =>
         item.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
-    };
+    }
 
     if (sortKey) {
-      filtered = [...filtered].sort((a, b) => {
-        if (a[sortKey] < b[sortKey]) return sortOrder === "asc" ? -1 : 1;
-        if (a[sortKey] > b[sortKey]) return sortOrder === "asc" ? 1 : -1;
-        return 0; // Yahan jab dono equal hon, toh unka order same rehna chahiye 	8 === 8 => 0 (same order maintain rahega)
+      filtered.sort((a, b) => {
+        return sortOrder === "asc"
+          ? a[sortKey] > b[sortKey] ? 1 : -1
+          : a[sortKey] < b[sortKey] ? 1 : -1;
       });
-    };
+    }
 
     return filtered;
   }, [data, searchTerm, sortKey, sortOrder]);
 
   const handleSort = (key) => {
-    if (sortKey === key) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSortKey(key);
-      setSortOrder("asc");
-    }
+    setSortOrder(sortKey === key && sortOrder === "asc" ? "desc" : "asc");
+    setSortKey(key);
   };
 
   return (
-    <div className="p-5">
-      {/* Search Input */}
-      <input
-        type="text"
-        placeholder="Search by title"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-4 p-2 border rounded w-full"
-      />
+    <div className="w-full bg-gray-600 min-h-screen p-4">
+      <div className="p-5 max-w-4xl mx-auto bg-gray-900 text-white rounded-lg shadow-lg">
+        <input
+          type="text"
+          placeholder="Search by title"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-2 mb-4 border border-gray-600 rounded bg-gray-800 text-white" />
 
-      {/* Table */}
-      <table className="min-w-full bg-white border border-gray-300">
-        <thead className="bg-gray-100">
-          <tr>
-            <th
-              className="p-2 text-left cursor-pointer"
-              onClick={() => handleSort("id")}>
-              ID {sortKey === "id" && (sortOrder === "asc" ? "▲" : "▼")}
-            </th>
-            <th
-              className="p-2 text-left cursor-pointer"
-              onClick={() => handleSort("title")}>
-              Title {sortKey === "title" && (sortOrder === "asc" ? "▲" : "▼")}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+        <div className="flex justify-between items-center p-2 bg-gray-700 rounded-md">
+          <div className="w-1/4 font-bold cursor-pointer" onClick={() => handleSort("id")}>
+            ID {sortKey === "id" && (sortOrder === "asc" ? "▲" : "▼")}
+          </div>
+          <div className="w-3/4 font-bold cursor-pointer" onClick={() => handleSort("title")}>
+            Title {sortKey === "title" && (sortOrder === "asc" ? "▲" : "▼")}
+          </div>
+        </div>
+
+        <div className="mt-2">
           {
-            filteredData.map((item) => (
-              <tr key={item.id} className="border-t">
-                <td className="p-2">{item.id}</td>
-                <td className="p-2">{item.title}</td>
-              </tr>
-            ))
+            loading
+              ? (
+                <div className="flex justify-center items-center">
+                  <div className="w-10 h-10 rounded-full border-dashed border-4 border-blue-600 animate-spin" />
+                </div>
+              )
+              :
+              (
+                filteredData.map((item) => (
+                  <div key={item.id} className="flex justify-between items-center p-3 bg-gray-800 rounded-md mb-2 shadow-sm">
+                    <div className="w-1/4">{item.id}</div>
+                    <div className="w-3/4">{item.title}</div>
+                  </div>
+                ))
+              )
           }
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };

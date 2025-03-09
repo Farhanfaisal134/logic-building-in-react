@@ -4,6 +4,9 @@ const ExpensiveCalculation = () => {
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
 
+  // console.log("Calculating...");
+  // const expensiveResult = count ** 2;
+
   const expensiveResult = useMemo(() => {
     console.log("Calculating...");
     return count ** 2; // 4*4

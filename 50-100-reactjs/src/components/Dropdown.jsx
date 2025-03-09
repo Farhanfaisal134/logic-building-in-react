@@ -69,8 +69,7 @@ const Dropdown = () => {
                   ? "bg-blue-100 text-blue-700"
                   : "hover:bg-gray-100"
                   }`}
-                onMouseEnter={() => setActiveIndex(index)}
-              >
+                onMouseEnter={() => setActiveIndex(index)}>
                 {option}
               </li>
             ))}

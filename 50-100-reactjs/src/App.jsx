@@ -164,7 +164,7 @@ const App = () => {
       {/* Q=> 21 */}
       {/* <CounterWithReducer /> */}
       {/* Q=> 22 */}
-      {/* <Parent /> */}
+      {/* <InfiniteCounterApp /> */}
       {/* Q=> 23 */}
       {/* <DebouncedSearch /> */}
       {/* Q=> 24 */}
@@ -205,7 +205,7 @@ const App = () => {
       {/* Q=> 41 */}
       {/* <StopWatch /> */}
       {/* Q=> 42 */}
-      {/* <InfiniteCounterApp /> */}
+      {/* <Parent /> */}
       {/* Q=> 43 */}
       {/* <SearchableTable /> */}
       {/* Q=> 44 */}
@@ -235,7 +235,7 @@ const App = () => {
       {/* Q=> 56 */}
       {/* <StartRating /> */}
       {/* Q=> 57 */}
-      {/* <Accordian /> */}
+      <Accordian />
       {/* Q=> 58 */}
       {/* <ImageCarousel /> */}
       {/* Q=> 59 */}
@@ -281,7 +281,7 @@ const App = () => {
       {/* Q=> 78 */}
       {/* <DataSorting /> */}
       {/* Q=> 79 */}
-      {/* <JobBoard /> */}
+      {/* <InputPlaceholderAnimation /> */}
       {/* Q=> 80 */}
       {/* <QuizApp /> */}
       {/* Q=> 81 */}
@@ -306,7 +306,7 @@ const App = () => {
       {/* Q=> 90 */}
       {/* <StepProgressBar /> */}
       {/* Q=> 91 */}
-      <TicTocToe />
+      {/* <TicTocToe /> */}
       {/* Q=> 92 */}
       {/* <SearchAutoCom /> */}
       {/* Q=> 93 */}
@@ -330,7 +330,7 @@ const App = () => {
       {/* Q=> 102 */}
       {/* <DynamicForm /> */}
       {/* Q=> 103 */}
-      {/* <InputPlaceholderAnimation /> */}
+      {/* <JobBoard /> */}
     </div>
   )
 };

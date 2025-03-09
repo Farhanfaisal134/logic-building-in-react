@@ -11,6 +11,7 @@ const SimpleFormHandle = () => {
     gender: '',
     interests: []
   });
+
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 

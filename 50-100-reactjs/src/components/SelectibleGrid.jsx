@@ -29,8 +29,6 @@ const App = () => {
   };
 
   const filColor = (sPos, ePos) => {
-    console.log(sPos, ePos);
-
     const [rowStart, colStart] = sPos;
     const [rowEnd, colEnd] = ePos;
 

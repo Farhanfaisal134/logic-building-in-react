@@ -45,53 +45,41 @@ const Accordian = () => {
     } else {
       copyState.splice(findIndexOfCurretnId, 1);
     };
-
     setMultiple(copyState);
   };
 
   return (
-    <div className="w-full min-h-screen p-4 flex flex-col justify-center items-center bg-gray-700 text-white">
-      <h1
-        className="mb-3 bg-gray-900 p-3 font-bold cursor-pointer"
-        onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
-        {enableMultiSelection
-          ? "Enable Multi Selection On"
-          : "Enable Multi Selection Off"}
-      </h1>
-      <div className="flex flex-col gap-5 w-2/3">
-        {
-        data &&
-          data.map((item, idx) => {
-            return (
-              <div
-                key={idx}
-                className="bg-gray-900 px-7 py-4 rounded-md cursor-pointer flex flex-col gap-3"
-                onClick={
-                  enableMultiSelection
-                    ? () => handleMultiSelection(item.id)
-                    : () => handleSingleSelection(item.id)
-                }>
-                <div className="flex justify-between text-2xl">
-                  <h1>{item.question}</h1>
-                  <span className="text-3xl">+</span>
-                </div>
-                <div>
+    <div className='flex justify-center p-4 bg-gray-700 h-screen'>
+      <div className='w-full max-w-3xl mx-auto'>
+        <button className='text-white text-xl bg-blue-600 rounded-sm p-2'
+          onClick={() => setEnableMultiSelection(!enableMultiSelection)}
+        >Enable Multi Selection {enableMultiSelection ? "ON" : "OFF"}</button>
+        <div className='w-full flex flex-col gap-3 text-white mt-4'>
+          {
+            data.map((item) => {
+              return (
+                <div key={item.id} onClick={() => enableMultiSelection
+                  ? handleMultiSelection(item.id)
+                  : handleSingleSelection(item.id)}
+                  className='flex flex-col gap-2 bg-gray-900 p-2 rounded-md'>
+                  <div className='flex justify-between'>
+                    <h1>{item.question}</h1>
+                    <button className='bg-blue-500 p-1 rounded-sm'>
+                      {selected?.includes(item.id) || multiple.includes(item.id) ? "-" : "+"}
+                    </button>
+                  </div>
                   {
-                    enableMultiSelection ? multiple.indexOf(item.id) !== -1 && (
-                      <div className="font-bold text-gray-400">{item.answer}</div>
-                    ) : (
-                      selected === item.id && (
-                        <div className="font-bold text-gray-400">{item.answer}</div>
-                      )
-                    )
+                    enableMultiSelection ? multiple.includes(item.id) && <p>{item.answer}</p>
+                      : selected?.includes(item.id) && <p>{item.answer}</p>
                   }
                 </div>
-              </div>
-            );
-          })}
+              )
+            })
+          }
+        </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default Accordian;
