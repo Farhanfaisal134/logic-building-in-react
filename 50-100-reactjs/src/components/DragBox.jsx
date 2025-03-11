@@ -1,56 +1,52 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const DragBox = () => {
-  const [boxPosition, setBoxPosition] = useState({ left: 0, top: 0 });
-  const [isDragging, setIsDragging] = useState(false);
   const [initialX, setInitialX] = useState(0);
   const [initialY, setInitialY] = useState(0);
+  const [boxPos, setBoxPos] = useState({ top: 0, left: 0 });
+  const [isDrag, setIsDrag] = useState(false);
 
-  function handleMouseDown(e) {
-    setIsDragging(true);
-    setInitialX(e.clientX - boxPosition.left)
-    setInitialY(e.clientY - boxPosition.top)
-  };
+  useEffect(() => {
+    const storedPos = JSON.parse(localStorage.getItem("boxPosition"));
+    if (storedPos) {
+      setBoxPos(storedPos);
+    }
+  }, []);
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+  function handleDown(e) {
+    setIsDrag(true);
+    setInitialX(e.clientX - boxPos.left);
+    setInitialY(e.clientY - boxPos.top);
+  }
 
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      const left = e.clientX - initialX;
-      const top = e.clientY - initialY;
-      setBoxPosition({ left, top });
-    };
+  function handleUp() {
+    setIsDrag(false);
+  }
+
+  function handleMove(e) {
+    if (!isDrag) return;
+
+    const left = e.clientX - initialX;
+    const top = e.clientY - initialY;
+
+    const newPos = { left, top };
+    setBoxPos(newPos);
+    localStorage.setItem("boxPosition", JSON.stringify(newPos));
   };
 
   return (
-    <div
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      style={{
-        left: boxPosition.left,
-        top: boxPosition.top,
-        position: "absolute",
-        width: "150px",
-        height: "150px",
-        backgroundColor: "#4CAF50",
-        color: "#fff",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "10px",
-        cursor: "pointer",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
-        transition: "background-color 0.3s",
-      }}
-      onMouseEnter={(e) => e.target.style.backgroundColor = "#66BB6A"}
-      onMouseLeave={(e) => e.target.style.backgroundColor = "#4CAF50"}
-    >
-      Drag Me
+    <div className="w-full h-screen relative bg-gray-100">
+      <div
+        onMouseUp={handleUp}
+        onMouseMove={handleMove}
+        onMouseDown={handleDown}
+        style={{ top: `${boxPos.top}px`, left: `${boxPos.left}px` }}
+        className="absolute w-40 h-40 rounded-md flex justify-center items-center 
+                   bg-gray-900 text-white text-xl cursor-pointer">
+        Drag Box
+      </div>
     </div>
-  )
+  );
 };
 
-export default DragBox
+export default DragBox;

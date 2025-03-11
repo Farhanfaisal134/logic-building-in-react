@@ -55,11 +55,13 @@ const RandomColorGen = () => {
       }
 
       <div className='flex lg:flex-row flex-col justify-center gap-4 '>
-        <button onClick={() => setTypeOfColor("hex")} className='px-3 py-2 rounded-md bg-gray-400 text-white md:text-xl'>Create HEX Color</button>
-        <button onClick={() => setTypeOfColor("rgb")} className='px-3 py-2 rounded-md bg-gray-400 text-white md:text-xl'>Create RGB Color</button>
-        <button onClick={typeOfColor === "hex" ?
-          () => handleCreateRandomHexColor() :
-          () => handleCreateRandomRgbColor()
+        <button onClick={() => setTypeOfColor("hex")}
+          className='px-3 py-2 rounded-md bg-gray-400 text-white md:text-xl'>Create HEX Color</button>
+        <button onClick={() => setTypeOfColor("rgb")}
+          className='px-3 py-2 rounded-md bg-gray-400 text-white md:text-xl'>Create RGB Color</button>
+        <button onClick={typeOfColor === "hex"
+          ? handleCreateRandomHexColor
+          : handleCreateRandomRgbColor
         } className='px-3 py-2 rounded-md bg-gray-400 text-white md:text-xl'>Generate Random Color</button>
       </div>
 

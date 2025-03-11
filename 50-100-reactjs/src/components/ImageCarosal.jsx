@@ -7,82 +7,52 @@ const images = [
 ];
 
 const ImageCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef(null);
-
-  const startInterval = () => {
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => prevIndex === images.length - 1 ? 0 : prevIndex + 1);
-    }, 3000);
-  };
-
-  const stopInterval = () => {
-    clearInterval(intervalRef.current);
-  };
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [runnig, setRunning] = useState(false)
+  const imgRef = useRef(null);
 
   useEffect(() => {
-    startInterval();
-    return () => clearInterval(intervalRef.current);
-  }, []);
+    if (!runnig) {
+      imgRef.current = setInterval(() => {
+        handleNext()
+      }, 1000);
+    }
 
-  const prevSlide = () => {
-    stopInterval();
-    setCurrentIndex((prevIndex) => prevIndex === 0 ? images.length - 1 : prevIndex - 1);
+    return () => clearInterval(imgRef.current)
+  }, [runnig]);
+
+  function handlePrev() {
+    setCurrentIndex((prev) => prev === 0 ? images.length - 1 : prev - 1)
   };
 
-  const nextSlide = () => {
-    stopInterval();
-    setCurrentIndex((prevIndex) => prevIndex === images.length - 1 ? 0 : prevIndex + 1);
+  function handleNext() {
+    setCurrentIndex((prev) => prev === images.length - 1 ? 0 : prev + 1)
   };
 
-  const goToSlide = (index) => {
-    stopInterval();
-    setCurrentIndex(index);
+  function handlePuse() {
+    clearInterval(imgRef.current)
+    setRunning(true)
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div
-        className="relative w-full max-w-4xl mx-auto"
-        onMouseEnter={stopInterval}
-        onMouseLeave={startInterval}>
-        {/* Image */}
-        <div className="overflow-hidden rounded-lg">
-          <img
-            src={images[currentIndex]}
-            alt={`Slide ${currentIndex + 1}`}
-            className="w-full h-64 object-cover transition-transform duration-500" />
-        </div>
-
-        {/* Buttons */}
-        <button
-          onClick={prevSlide}
-          className="absolute top-1/2 -translate-y-1/2 left-2 bg-gray-800 text-white 
-          p-2 rounded-full hover:bg-gray-700">
-          ❮
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute top-1/2 -translate-y-1/2 right-2 bg-gray-800 text-white 
-          p-2 rounded-full hover:bg-gray-700">
-          ❯
-        </button>
-
-        {/* Dots */}
-        <div className="flex justify-center space-x-2 mt-4">
-          {
-            images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full ${currentIndex === index ? "bg-blue-500" : "bg-gray-400"
-                  }`}></button>
-            ))
-          }
-        </div>
+    <div className="flex h-screen justify-center p-8 flex-col gap-4">
+      <div className="w-full h-60 max-w-3xl mx-auto rounded-md relative"
+        onMouseEnter={handlePuse}
+        onMouseLeave={() => setRunning(false)}>
+        <img src={images[currentIndex]} className="h-full w-full object-cover rounded-md" />
+        <button className="absolute left-2 top-1/2 text-white text-xl" onClick={handlePrev}>{"<"}</button>
+        <button className="absolute right-2 top-1/2 text-white text-xl" onClick={handleNext}>{">"}</button>
+      </div>
+      <div className="flex gap-2 justify-center">
+        {
+          images.map((_, idx) => (
+            <button onClick={() => setCurrentIndex(idx)} className={`w-6 h-6 rounded-full 
+              ${currentIndex === idx ? "bg-gray-500" : "bg-gray-900"}`} />
+          ))
+        }
       </div>
     </div>
-  );
+  )
 };
 
 export default ImageCarousel;

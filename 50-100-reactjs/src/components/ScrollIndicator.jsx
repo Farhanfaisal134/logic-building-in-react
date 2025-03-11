@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 const ScrollIndicator = ({ url = "https://dummyjson.com/products?limit=100" }) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
 
   async function fetchData(getUrl) {
@@ -16,7 +15,7 @@ const ScrollIndicator = ({ url = "https://dummyjson.com/products?limit=100" }) =
         setLoading(false)
       };
     } catch (error) {
-      setErrorMessage(error.message)
+      console.log(error);
       setLoading(false)
     }
   };

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const LoadMoreData = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
   const [disableButton, setDisableButton] = useState(false);
@@ -18,7 +17,7 @@ const LoadMoreData = () => {
       };
       setLoading(false);
     } catch (error) {
-      setError(error.message);
+      console.log(error);
       setLoading(false);
     };
   };
@@ -31,31 +30,29 @@ const LoadMoreData = () => {
     if (products && products.length === 100) setDisableButton(true);
   }, [products]);
 
-  if (loading) {
-    return <div className="text-center text-lg">Loading data! Please wait...</div>;
-  };
-
-  if (error) {
-    return <div className="text-center text-red-500">Error: {error}</div>;
-  };
-
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold text-center mb-8">Product List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {
-          products.map((product) => (
-            <div
-              key={product.id}
-              className="border border-gray-300 rounded-lg p-4 shadow hover:shadow-lg transition">
-              <img
-                src={product.thumbnail}
-                alt={product.title}
-                className="w-full h-48 object-cover mb-4 rounded" />
-              <h2 className="text-lg font-semibold">{product.title}</h2>
-              <p className="text-gray-600">${product.price}</p>
-            </div>
-          ))
+          loading
+            ? (
+              <div className="col-span-full flex justify-center">
+                <div className="w-12 h-12 rounded-full border-4 border-dashed border-blue-600 animate-spin" />
+              </div>
+            )
+            : products.map((product) => (
+              <div
+                key={product.id}
+                className="border border-gray-300 rounded-lg p-4 shadow hover:shadow-lg transition">
+                <img
+                  src={product.thumbnail}
+                  alt={product.title}
+                  className="w-full h-48 object-cover mb-4 rounded" />
+                <h2 className="text-lg font-semibold">{product.title}</h2>
+                <p className="text-gray-600">${product.price}</p>
+              </div>
+            ))
         }
       </div>
 

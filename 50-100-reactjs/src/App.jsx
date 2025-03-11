@@ -235,7 +235,7 @@ const App = () => {
       {/* Q=> 56 */}
       {/* <StartRating /> */}
       {/* Q=> 57 */}
-      <Accordian />
+      {/* <Accordian /> */}
       {/* Q=> 58 */}
       {/* <ImageCarousel /> */}
       {/* Q=> 59 */}
@@ -259,7 +259,7 @@ const App = () => {
       {/* Q=> 68 */}
       {/* <Throttling /> */}
       {/* Q=> 69 */}
-      {/* <DragBox /> */}
+      <DragBox />
       {/* Q=> 70 */}
       {/* <IntractiveShapes /> */}
       {/* Q=> 71 */}
