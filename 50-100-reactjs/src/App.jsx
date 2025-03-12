@@ -269,9 +269,7 @@ const App = () => {
       {/* Q=> 73 */}
       {/* <ClickCounter /> */}
       {/* Q=> 74 */}
-      {/* <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <BlogExcerpt />
-      </div> */}
+      {/* <BlogExcerpt /> */}
       {/* Q=> 75 */}
       {/* <SelectibleGrid /> */}
       {/* Q=> 76 */}

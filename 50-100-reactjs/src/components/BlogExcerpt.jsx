@@ -1,31 +1,19 @@
 import React, { useState } from 'react'
 
-const BlogExcerpt = (
-  {
-    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultricies...",
-    limit = 50
-  }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleReadMore = () => {
-    setExpanded(!expanded);
-  };
+let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultricies..."
+const BlogExcerpt = ({ limit = 20 }) => {
+  const [expand, setExpand] = useState(false);
 
   return (
-    <div className="p-4 border border-gray-300 rounded-lg shadow-md bg-white max-w-md mx-auto">
-      <p className="text-gray-800">
-        {expanded ? text : text.slice(0, limit) + (text.length > limit ? "..." : "")}
-      </p>
-      {text.length > limit && (
-        <button
-          onClick={toggleReadMore}
-          className="mt-2 text-blue-600 hover:underline focus:outline-none"
-        >
-          {expanded ? "See Less" : "See More"}
-        </button>
-      )}
+    <div className='flex justify-center items-center bg-gray-900 text-white h-screen'>
+      <div className='p-4 bg-gray-800 flex gap-1 shadow-md w-full max-w-3xl mx-auto'>
+        <p>{expand ? text : text.length > limit ? text.slice(0, limit) + "..." : text}</p>
+        {
+          text.length > limit && <button onClick={() => setExpand(!expand)}>{expand ? "See Less" : "See More"}</button>
+        }
+      </div>
     </div>
-  );
-}
+  )
+};
 
-export default BlogExcerpt
+export default BlogExcerpt;

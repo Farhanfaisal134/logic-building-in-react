@@ -15,18 +15,15 @@ const MemoryGame = () => {
   const [solvedList, setSolvedList] = useState([]);
   const [nums, setNums] = useState(getNums());
 
-  const randdomNums = () => {
-    const copyNums = [...nums]
-    return copyNums.sort(() => Math.random() - 0.5)
-  };
-
   function handleStart() {
     setStage("start");
-    setNums(randdomNums());
+    const copyNums = [...nums]
+    copyNums.sort(() => Math.random() - 0.5)
+    setNums(copyNums);
     setSolvedList([]);
   };
 
-  const handleClick = (num, index) => {
+  const handleClick = (index) => {
     if (opened.length === 2) return
     setOpened((prev) => [...prev, index])
   };
