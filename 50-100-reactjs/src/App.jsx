@@ -259,7 +259,7 @@ const App = () => {
       {/* Q=> 68 */}
       {/* <Throttling /> */}
       {/* Q=> 69 */}
-      <DragBox />
+      {/* <DragBox /> */}
       {/* Q=> 70 */}
       {/* <IntractiveShapes /> */}
       {/* Q=> 71 */}
@@ -302,7 +302,7 @@ const App = () => {
       {/* Q=> 89 */}
       {/* <SimpleFormHandle /> */}
       {/* Q=> 90 */}
-      {/* <StepProgressBar /> */}
+      <StepProgressBar />
       {/* Q=> 91 */}
       {/* <TicTocToe /> */}
       {/* Q=> 92 */}

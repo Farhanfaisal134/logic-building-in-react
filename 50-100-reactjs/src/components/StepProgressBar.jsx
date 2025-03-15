@@ -5,64 +5,35 @@ const StepProgressBar = () => {
   const steps = ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"];
 
   return (
-    <div
-      className='flex flex-col gap-4 max-w-6xl mx-auto items-center mt-10'>
-      <h1 className='font-bold text-2xl'>Step Progress Bar</h1>
-      <MultiSteps
-        setActiveStep={setActiveStep}
-        steps={steps}
-        activeStep={activeStep}
-      />
+    <div className='p-8 w-full flex items-center gap-3 flex-col'>
+      <h1 className='text-2xl font-bold'>Step Progress Bar</h1>
+      <div className='w-full max-w-3xl mx-auto bg-gray-500 p-2'>
+        <div className='flex justify-center flex-shrink-0'>
+          {
+            steps.map((step, idx) => (
+              <div key={idx} className={`w-full text-white p-1 rounded-md flex justify-center 
+                transition-colors duration-300 ease-in-out
+                ${idx <= activeStep ? "bg-green-500" : "bg-blue-500"}`}>{step}</div>
+            ))
+          }
+        </div>
+
+      </div>
+
+      <div className='flex gap-4'>
+        <button
+          onClick={() => setActiveStep(activeStep - 1)}
+          disabled={activeStep === 0}
+          className={`bg-blue-500 px-3 py-1 text-white rounded-md text-xl 
+          disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-black`}>Prev</button>
+        <button
+          onClick={() => setActiveStep(activeStep + 1)}
+          disabled={activeStep === steps.length - 1}
+          className={`bg-blue-500 px-3 py-1 text-white rounded-md text-xl 
+          disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-black`}>Next</button>
+      </div>
     </div>
   )
 };
 
-const MultiSteps = ({ steps, activeStep, setActiveStep }) => {
-  function handlePreviousStep() {
-    setActiveStep((prevStep) => prevStep - 1);
-  };
-
-  function handleNextStep() {
-    setActiveStep((prevStep) => prevStep + 1);
-  };
-
-  return (
-    <>
-      <div className="bg-gray-300 p-2 w-full flex text-white text-xl">
-        {
-          steps && steps.length > 0
-            ? steps.map((stepItem, index) => (
-              <div
-                key={index}
-                className={`px-4 py-2 w-full rounded-md flex justify-center 
-                  transition-colors duration-500 ease-in-out
-                ${index <= activeStep ? "bg-green-600" : "bg-blue-700"}`}
-              >
-                {stepItem}
-              </div>
-            ))
-            : null
-        }
-      </div>
-      <div className="flex gap-10">
-        <button
-          className={`px-4 py-2 rounded-md border-2 border-gray-500 text-xl font-bold 
-          ${activeStep === 0 ? "bg-gray-400 cursor-not-allowed text-white" : "bg-yellow-300"}`}
-          onClick={handlePreviousStep}
-          disabled={activeStep === 0}>
-          Prev
-        </button>
-
-        <button
-          className={`px-4 py-2 rounded-md border-2 border-gray-500 text-xl font-bold 
-         ${activeStep === steps.length - 1 ? "bg-gray-400 cursor-not-allowed text-white" : "bg-yellow-300"}`}
-          onClick={handleNextStep}
-          disabled={activeStep === steps.length - 1}>
-          Next
-        </button>
-      </div>
-    </>
-  )
-};
-
-export default StepProgressBar
+export default StepProgressBar;
