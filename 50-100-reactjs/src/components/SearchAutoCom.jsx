@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 const SearchAutoCom = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
   const [users, setUsers] = useState([]);
   const [searchParam, setSearchParams] = useState("");
   const [showDropdown, setShowDropDown] = useState(false);
@@ -15,7 +14,7 @@ const SearchAutoCom = () => {
     if (query.length > 1) {
       const filteredData =
         users && users.length
-          ? users.filter((item) => item.toLowerCase().indexOf(query) > -1)
+          ? users.filter((item) => item.toLowerCase().includes(query))
           : [];
 
       setFiltredUsers(filteredData);
@@ -44,7 +43,6 @@ const SearchAutoCom = () => {
     } catch (error) {
       setLoading(false);
       console.log(error);
-      setError(error);
     }
   };
 
@@ -81,30 +79,26 @@ const SearchAutoCom = () => {
         }
         <div>
           {
-            showDropdown && filtredUsers.length > 0 && <Suggestions handleClick={handleClick} data={filtredUsers} />
+            showDropdown && filtredUsers.length > 0 && (
+              <ul className='flex flex-col bg-white m-3 border-zinc-200 border'>
+                {
+                  filtredUsers && filtredUsers.length
+                    ? filtredUsers.map((item, index) => (
+                      <li
+                        className='px-2 py-2 text-xl font-bold text-center border-2 hover:bg-slate-600 hover:text-white'
+                        onClick={handleClick}
+                        key={index}
+                      >{item}</li>
+                    ))
+                    : null
+                }
+              </ul>
+            )
           }
         </div>
       </div>
     </div>
   );
-}
-
-const Suggestions = ({ handleClick, data }) => {
-
-  return (
-    <ul className='flex flex-col bg-white m-3 border-zinc-200 border'>
-      {
-        data && data.length
-          ? data.map((item, index) => (
-            <li
-              className='px-2 py-2 text-xl font-bold text-center border-2 hover:bg-slate-600 hover:text-white'
-              onClick={handleClick}
-              key={index}
-            >{item}</li>
-          ))
-          : null}
-    </ul>
-  )
 };
 
 export default SearchAutoCom;

@@ -70,9 +70,9 @@ export default function App() {
           <NineteenComp />
         </div>
       </ThemeProvider> */}
-      {/* <CartProvider>
+      <CartProvider>
         <Twenty />
-      </CartProvider> */}
+      </CartProvider>
       {/* <TwentyOne /> */}
       {/* <TwentyTwo /> */}
       {/* <TwentyThree /> */}
